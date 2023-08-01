@@ -1,0 +1,65 @@
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PicSqueeze-create</title>
+</head>
+
+<body>
+  <!--{% if messages %}
+      {% for message in messages%}
+        <h1>{{message}}</h1>
+      {% endfor %}
+    {% endif %}-->
+  <h1>create using videos</h1>
+  <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token%}
+    <label for="video">video</label>
+    <br>
+    <input type="file" name="video" id="video">
+    <br>
+    <input type="submit" value="submit">
+  </form>
+  <h1>{{ video }}</h1>
+
+  <h1>create using images</h1>
+  <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token%}
+    <label for="image">image</label>
+    <br>
+    <input type="file" multiple name="gif_images" id="image">
+    <br>
+    <label for="width">width</label>
+    <br>
+    <input type="number" name="gif_width" id="width">
+    <br>
+    <label for="height">height</label>
+    <br>
+    <input type="number" name="gif_height" id="height">
+    <br>
+    <label for="duration">duration(sec)</label>
+    <br>
+    <input type="number" name="gif_duration" id="duration">
+    <br>
+    <label for="name">name</label>
+    <br>
+    <input type="text" name="gif_name" id="name">
+    <br>
+    <input type="submit" value="submit">
+  </form>
+
+
+
+  {% if c_download_link %}
+  <a href="{{ c_download_link }}"><button>Download Compressed Image</button></a>
+  {% endif %}
+
+
+</body>
+
+</html>
+{% endblock content%}

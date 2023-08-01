@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('COMPRESSOR_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app','now.sh','127.0.0.1']
+ALLOWED_HOSTS = ['.vercel.app', 'now.sh', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # third party apps
+    'social_django',
     'compressor1.apps.Compressor1Config',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +52,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # third party middlewares
+    'social_django.middleware.SocialAuthExceptionMiddleware',
+    'users.middlewares.Onesessionperuser',
 ]
 
 ROOT_URLCONF = 'compressor.urls'
@@ -64,6 +70,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # third party templates
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -76,10 +85,10 @@ WSGI_APPLICATION = 'compressor.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+   # 'default': {
+   #     'ENGINE': 'django.db.backends.sqlite3',
+   #     'NAME': BASE_DIR / 'db.sqlite3',
+   # }
 }
 
 
@@ -119,7 +128,53 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'users.backends.EmailOrUsernameBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+SOCIAL_AUTH_PIPELINE = ('social_core.pipeline.social_auth.social_details',
+                        'social_core.pipeline.social_auth.social_uid',
+                        'social_core.pipeline.social_auth.social_user',
+                        'social_core.pipeline.user.get_username',
+                        'social_core.pipeline.social_auth.associate_by_email',
+                        'social_core.pipeline.user.create_user',
+                        'social_core.pipeline.social_auth.associate_user',
+                        'social_core.pipeline.social_auth.load_extra_data',
+                        'social_core.pipeline.user.user_details',
+                        )
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = os.environ.get('COMPRESSOR SENDGRID HOST USER')
+EMAIL_HOST_PASSWORD = os.environ.get('COMPRESSOR SENDGRID SECRET KEY')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'timileyinadesina1@gmail.com' 
+
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('COMPRESSOR FACEBOOK KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('COMPRESSOR FACEBOOK SECRET KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('COMPRESSOR GOOGLE KEY') 
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('COMPRESSOR GOOGLE SECRET KEY')
+SOCIAL_AUTH_TWITTER_KEY = os.environ.get('COMPRESSOR TWITTER KEY')
+SOCIAL_AUTH_TWITTER_SECRET = os.environ.get('COMPRESSOR TWITTER SECRET KEY')
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'compress'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'login'
+

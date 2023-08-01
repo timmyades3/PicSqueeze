@@ -1,0 +1,48 @@
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PicSqueeze-compress</title>
+</head>
+<body>
+     
+    <form action="" method="post" enctype="multipart/form-data" >
+      {% csrf_token%}
+      <label for="image">image</label>
+      <br>
+      <input type="file" multiple  name="image" id="">
+      <br>
+      <label for="range">quality</label>
+      <br>
+      <input type="range" name="quality" id="range" min="0" max="100" value="80">
+      <br>
+      <input type="submit" value="submit">
+    </form>
+    <h1>{{ img_f }}</h1>
+    <h2>{{ img_u }}</h2>
+    <h3>{{ im }}</h3>
+    <h4>{{ img_s }}</h4>
+
+    {% if compress_download_link %}
+      <a href="{{ compress_download_link }}"><button>Download Compressed Image</button></a>
+    {% endif %}
+    
+    <div>
+      <a href="{% url 'convert' %}">link to convert image format</a>
+    </div>
+    <div>
+      <a href="{% url 'resize' %}">link to resize image</a>
+    </div>
+    <div>
+      <a href="{% url 'create' %}">link to create gif</a>
+    </div>
+    <div>
+      <a href="{% url 'profile' %}">profile</a>
+    </div>
+    
+</body>
+</html>
+{% endblock content%}
