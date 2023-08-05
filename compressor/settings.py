@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # third party apps
     'social_django',
+    'storages',
     'compressor1.apps.Compressor1Config',
     'users.apps.UsersConfig',
 ]
