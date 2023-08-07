@@ -17,7 +17,7 @@
   {% endif %}
   <form action="" method="post">
     {% csrf_token %}
-    <label for="username">email</label>
+    <label for="username">email or username</label>
     <br>
     <input type="text" name="username" id="username">
     <br>
@@ -31,10 +31,6 @@
     <br>
     <input type="submit" value="submit">
   </form>
-  
-  <div>
-    <a href="{% url 'social:begin' 'facebook' %}">login with facebook</a>
-  </div>
   <div>
     <a href="{% url 'social:begin' 'twitter' %}">twitter</a>
   </div>
