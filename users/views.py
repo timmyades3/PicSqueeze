@@ -84,7 +84,9 @@ class Profile(LoginRequiredMixin, View):
 
     def get(self, request):
         u_form = Updateuserform()
-        return render(request, 'profile.html', {'u_form': u_form})
+        user_ip = self.get_ip_address(request)
+        context = {'user_ip': user_ip}
+        return render(request, 'profile.html', context)
 
     def get_ip_address(self, request):
         user_ip_address = request.META.get('HTTP_X_FORWARDED_FOR')
