@@ -94,6 +94,14 @@ DATABASES = {
     #     'HOST': os.environ.get('PGHOST'),
     #     'PORT': '5432',
     # }
+    # 'default': {
+    # 'ENGINE': 'django.db.backends.postgresql',
+    # 'NAME': 'neondb',
+    # 'USER': 'timmyades3',
+    # 'PASSWORD': 'JKvt5pN0XhqM',
+    # 'HOST': 'ep-rapid-wood-36794854.us-east-2.aws.neon.tech',
+    # 'PORT': '5432',
+    # }
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',

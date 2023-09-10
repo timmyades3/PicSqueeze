@@ -98,11 +98,6 @@ class Profile(LoginRequiredMixin, View):
             print(ip)
         return ip
 
-    def show_ip_address(self, request):
-        user_ip = self.get_ip_address(request)
-        context = {'user_ip': user_ip}
-        return render(request, 'profile.html', context)
-
 
 class Verification(LoginRequiredMixin, View):
     OTP_EXPIRATION_TIME = 60
