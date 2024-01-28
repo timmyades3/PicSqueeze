@@ -149,7 +149,7 @@ class Download(View):
                 'Bucket': settings.AWS_STORAGE_BUCKET_NAME,
                 'Key': s3_key
             },
-            ExpiresIn=3600
+            ExpiresIn=3600000
         )
 
         return HttpResponseRedirect(presigned_url)
@@ -287,3 +287,81 @@ class Resize(LoginRequiredMixin, View):
         return render(request, 'resize-img.html', {'form': form})
 
 
+# class Create(LoginRequiredMixin, View):
+#     login_url = '/login/'
+#     redirect_field_name = 'login'
+#     def post(self, request):
+#         form = CreategifForm(request.POST, request.FILES)
+#         gif_images = request.FILES.getlist('gif_images')
+#         if form.is_valid():
+#             form.save()
+
+#             video = form.cleaned_data['video']
+#             gif_width = form.cleaned_data['gif_width']
+#             gif_height = form.cleaned_data['gif_height']
+#             gif_duration = form.cleaned_data['gif_duration']
+#             gif_name = form.cleaned_data['gif_name']
+
+#             if video != None:
+#                 original_filename = video.name
+#                 filename, extension = os.path.splitext(original_filename)
+#                 unique_id = str(uuid.uuid4())[:8]
+#                 modified_filename = f'{filename}_{unique_id}{extension}'
+#                 temp_video_path_f = os.path.join(os.path.join(
+#                     os.getcwd(), 'media'), 'temp_'+modified_filename)
+#                 temp_video_path = default_storage.save(
+#                     temp_video_path_f, video)
+#                 c_Format = '.gif'
+#                 c_save_name = filename+'_PicSqueeze'+c_Format
+#                 c_save_path = os.path.join(os.getcwd(), 'media', 'created')
+#                 c_gif_path = os.path.join(c_save_path, c_save_name)
+#                 reader = imageio.get_reader(temp_video_path_f, 'ffmpeg')
+#                 fps = reader.get_meta_data().get('duration')
+#                 writer = imageio.get_writer(
+#                     c_gif_path, 'GIF', duration=fps, loop=0)
+#                 for frames in reader:
+#                     writer.append_data(frames)
+#                 reader.close()
+#                 default_storage.delete(temp_video_path)
+#             else:
+#                 c_Format = '.gif'
+#                 c_save_name = gif_name+'_PicSqueeze'+c_Format
+#                 c_save_path = os.path.join(os.getcwd(), 'media', 'created')
+#                 c_gif_path = os.path.join(c_save_path, c_save_name)
+#                 c_frames = []
+#                 for img in gif_images:
+#                     Creategif.objects.create(gif_image=img)
+#                     c_new_frame = Image.open(img)
+#                     c_new_frame = c_new_frame.resize((gif_width, gif_height))
+#                     c_frames.append(c_new_frame)
+#                 c_number_of_frames = len(c_frames)
+#                 duration = int(gif_duration*1000/c_number_of_frames)
+#                 c_frames[0].save(c_gif_path,
+#                                  format='GIF',
+#                                  append_images=c_frames[1:],
+#                                  save_all=True,
+#                                  duration=duration,
+#                                  loop=0)
+
+#             download_link = reverse(
+#                 'download', args=[f'{c_save_name}', c_save_path])
+
+#             context = {
+#                 'form': form,
+#                 'c_download_link': download_link
+#             }
+
+#             return render(request, 'creategif.html', context)
+
+#         else:
+#             gif_image_error = form.errors.get('gif_image')
+#             print(gif_image_error)
+#             context = {
+#                 'img_e': gif_image_error
+#             }
+#             return render(request, '404.html', context)
+
+#     def get(self, request):
+#         form = CreategifForm(request.POST, request.FILES)
+
+#         return render(request, 'creategif.html', {'form': form})
