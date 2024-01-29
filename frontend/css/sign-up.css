@@ -6,7 +6,8 @@
 .signup__div{
     width:100%;
     height: 100vh;
-    background-color: red;
+    background-color: #fff;
+    padding-bottom: 3cm;
 }
 /* .signup__div-div2{
     width: 40%;
@@ -15,5 +16,25 @@
     margin-left: 60%;
 } */
 .signup__div2{
-    height:7cm;
+    height:60vh;
+    background-color: red;
+}
+fieldset{
+    height:0.8cm;
+    width: 95%;
+    display:flex;
+    margin-top: 4px;
+}
+.icon{
+    width:0.5cm;
+    margin-left: 4px;
+    margin-top: 5px;
+    
+}
+input{
+    height:0.7cm ;
+    width:85%;
+    border: none;
+    margin-left: 0.3cm;
+
 }
