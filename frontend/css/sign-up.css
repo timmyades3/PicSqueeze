@@ -3,11 +3,34 @@
     padding:0;
     overflow-x: hidden;
 }
+.company-name{
+    text-align: center;
+    font-size: 30pt;
+    font-weight: bold;
+    margin-bottom: 0.5cm;
+}
+.text1{
+    font-size: 16pt;
+    text-align: center;
+    font-weight: bold;
+}
+.authentication{
+    width:1.6cm;
+    height:0.9cm;
+    border-radius: 5px;
+    border-width: 1px;
+    overflow-y: hidden;
+}
+ .signup__div1{
+    margin-top: 25vh;
+    margin-left: 10vw;
+}
 .signup__div{
     width:100%;
     height: 100vh;
     background-color: #fff;
-    padding-bottom: 3cm;
+    padding-bottom: 2cm;
+    
 }
 /* .signup__div-div2{
     width: 40%;
@@ -24,6 +47,7 @@ fieldset{
     width: 95%;
     display:flex;
     margin-top: 4px;
+    border-radius: 5px;
 }
 .icon{
     width:0.5cm;
@@ -37,4 +61,15 @@ input{
     border: none;
     margin-left: 0.3cm;
 
+}
+
+.button{
+    height:1.2cm;
+    width: 96%;
+    margin-top: 0.8cm;
+    border-radius: 7px;
+}
+.button:hover{
+    background-color: black;
+    color:white;
 }
