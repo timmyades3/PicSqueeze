@@ -1,60 +1,96 @@
+/* Universal selector and color variables */
 *{
     margin:0;
     padding:0;
     overflow-x: hidden;
+    font-family: 'DM Sans', sans-serif;
 }
+
+:root{
+    --primary-color:#0083D0;
+    --white: #fff;
+}
+/* End of Universal selector and color variables */
+
+/* Start of signup section */
+
+/* Start of style for h1 and p elements */
 .company-name{
     text-align: center;
     font-size: 30pt;
     font-weight: bold;
     margin-bottom: 0.5cm;
 }
+
 .text1{
     font-size: 16pt;
     text-align: center;
     font-weight: bold;
 }
-.authentication{
-    width:1.6cm;
-    height:0.9cm;
-    border-radius: 5px;
-    border-width: 1px;
+/* end of the style for h1 and p elements  */
+
+/* Start of facebook and google signup option image */
+label{
     overflow-y: hidden;
 }
+.authentication{
+    width:2cm;
+    height: 0.9cm;
+    margin-bottom: 0.2cm;
+}
+
+.authentication-icon{
+    width: 100%; 
+    height: 0.9cm; 
+    display: block;
+    margin: auto; 
+
+}
+
+.google-pic{
+    width:1.0cm;
+}
+
+.authentication-section{
+    display:flex;
+    width:100%;
+    margin-top: 0.4cm;
+    margin-bottom: 0.3cm;
+    justify-content: center;
+}
+/* End of facebook and google signup option image */
+
+/* Start of input area */
  .signup__div1{
     margin-top: 25vh;
-    margin-left: 10vw;
+    margin-left: 8vw;
+    margin-right: 8vw;
 }
 .signup__div{
     width:100%;
     height: 100vh;
     background-color: #fff;
-    padding-bottom: 2cm;
+    padding-bottom: 1cm;
     
 }
-/* .signup__div-div2{
-    width: 40%;
-    height: 100%;
-    background-color: blue;
-    margin-left: 60%;
-} */
-.signup__div2{
-    height:60vh;
-    background-color: red;
-}
+
 fieldset{
     height:0.8cm;
     width: 95%;
     display:flex;
     margin-top: 4px;
     border-radius: 5px;
+    border-color: var(--primary-color);
+
 }
+
 .icon{
     width:0.5cm;
     margin-left: 4px;
     margin-top: 5px;
-    
+    overflow-y: hidden;
 }
+
 input{
     height:0.7cm ;
     width:85%;
@@ -68,8 +104,34 @@ input{
     width: 96%;
     margin-top: 0.8cm;
     border-radius: 7px;
+    font-size: 14pt;
+    font-weight: bold;
+    background-color: var(--primary-color);
+    border-color: var(--white);
+    color:var(--white)
 }
-.button:hover{
-    background-color: black;
-    color:white;
+/* end of input area */
+
+/* start of features side of the page */
+.signup__div2{
+    height:60vh;
+    background-color: #eee8ff;
 }
+.signup__div2-text{
+    font-size: 16pt;
+    text-align: center;
+    width: 100%;
+}
+
+span{
+    font-weight: bold;
+}
+/* end of features side of the page */
+
+/* Media Queries */
+/* .signup__div-div2{
+    width: 40%;
+    height: 100%;
+    background-color: blue;
+    margin-left: 60%;
+} */
