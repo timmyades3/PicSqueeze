@@ -4,25 +4,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="PicSqueeze offers powerful image compression tools to reduce file sizes without compromising quality. Boost your website's performance with fast-loading images.">
+
+    <!--  Appearance of content when shared on social media platforms -->
+    <meta property="og:title" content="PicSqueeze - Image Compression">
+    <meta property="og:description" content="Powerful image compression tools for fast-loading images.">
+    <!-- 
+        <meta property="og:image" content="https://www.picsqueeze.com/images/picsqueeze-logo.png">
+    <meta property="og:url" content="https://www.picsqueeze.com/"> 
+    Link the Site logo properly!
+-->
+
+    <!--  Appearance of content when shared on Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PicSqueeze - Image Compression">
+    <meta name="twitter:description" content="Powerful image compression tools for fast-loading images.">
+    <!-- <meta name="twitter:image" content="https://www.picsqueeze.com/images/picsqueeze-logo.png"> -->
+
+
     <!-- Add the SEO meta elements here! -->
-    <title>PicSqueeze Image Compressor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap"
+        rel="stylesheet"> -->
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <title>PicSqueeze - Image Compression</title>
 </head>
 
 <body>
     <header>
-        <h1><a href="/">PicSqueeze</a></h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+        <div class="landing-header">
+            <a href="#" id="picsqueeze-logo">PicSqueeze</a>
+            <button class="mobile_menu-btn">M</button>
+            <nav class="desktop-landing-menu">
+                <ul class="desktop__landing-menu-list">
+                    <li><a href="#home">Image Resizer</a></li>
+                    <li><a href="#about">Crop Image</a></li>
+                    <li><a href="#contact">Image Compressor</a></li>
+                    <li>
+                        <a href="#" id='submenu_desktop-btn'>Services <i class="fa fa-caret-down"
+                                aria-hidden="true"></i> <i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                        <!-- Submenu -->
+                        <ul class="submenu_desktop">
+                            <li><a href="#">Web Development</a></li>
+                            <li><a href="#">Graphic Design</a></li>
+                            <li><a href="#">Digital Marketing</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#login">Login</a></li>
+                    <li><a href="./html/sign-up.html">SignUp</a></li>
+                </ul>
+            </nav>
+        </div>
+        <nav class="mobile-landing-menu">
+            <ul class="landing-menu-list">
+                <li><a href="#home">Image Resizer</a></li>
+                <li><a href="#about">Crop Image</a></li>
+                <li><a href="#contact">Image Compressor</a></li>
+                <li>
+                    <a href="#" id='submenu_mobile-btn'>Services <i class="fa fa-caret-down" aria-hidden="true"></i> <i
+                            class="fa fa-caret-up" aria-hidden="true"></i></a>
+                    <!-- Submenu -->
+                    <ul class="submenu_mobile">
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Graphic Design</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                    </ul>
+                </li>
                 <li><a href="#login">Login</a></li>
-                <li><a href="#signup">SignUp</a></li>
+                <li><a href="./html/sign-up.html">SignUp</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <h1>MAIN SECTION</h1>
+        <section>
+            <div>
+                <h1>Image Compressor</h1>
+                <p>Best web app to compress image files online for free.</p>
+            </div>
+            <input type="file" name="select-image" placeholder="Select and Image" />
+        </section>
     </main>
     <footer>
         <p>Footer Section</p>

@@ -1,0 +1,205 @@
+:root {
+    --primary: #0083D0;
+    --darkmode: #1C1E25;
+    --greyish: #b4aaaa;
+    --dark-greyish: #292828;
+    --lightmode: #ffffff;
+    --text-one: #f8f0f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+/* --- GENERAL STYLES --- */
+
+body {
+    background-color: var(--darkmode);
+    color:  #f8f0f0
+}
+
+.container {
+    width: 100vw;
+    padding-inline: 3rem;
+    padding-block: 1rem;
+}
+
+/* --- HEADER STYLES --- */
+
+header {
+    background-color: var(--darkmode);
+    color: #f8f0f0;
+    border-bottom: 1px solid var(--greyish);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.164);
+}
+
+.landing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 20px;
+    padding-inline: 3rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-one);
+}
+
+#picsqueeze-logo {
+    color: var(--text-one);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* --- MOBILE MENU STYLES --- */
+
+.landing-menu {
+    display: flex;
+    justify-content: start;
+}
+
+.landing-menu-list li {
+    list-style: none;
+    border-top: 1px solid var(--darkmode);
+    padding-block: 20px;
+}
+
+.landing-menu-list li:first-child {
+    border-top: 1px solid var(--darkmode);
+    border-bottom: none;
+}
+
+.landing-menu-list li:last-child {
+    border-top: 1px solid var(--darkmode);
+    border-bottom: 1px solid var(--darkmode);
+
+}
+
+.landing-menu-list li a {
+    padding-inline: 3rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+ /* Submenu Mobile Styles */
+ .submenu_mobile {
+    display: none;
+    padding-inline: 1rem;
+  }
+
+  #submenu_mobile-btn {
+      border: none !important;
+  }
+
+  #submenu_mobile-btn, #submenu_desktop-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 5px;
+  }
+
+  #submenu_mobile-btn .fa-caret-down, #submenu_desktop-btn .fa-caret-down  {
+    display: block;
+  }
+
+  #submenu_mobile-btn .fa-caret-up, #submenu_desktop-btn .fa-caret-up {
+    display: none;
+  }
+
+  .submenu_mobile li  {
+    border: none !important;
+  }
+
+  li:hover .submenu_mobile, li:hover .submenu_desktop {
+    display: block;
+  }
+
+  .submenu_mobile a {
+    padding: 10px;
+    display: block;
+    white-space: nowrap;
+  }
+
+  li:hover #submenu_mobile-btn .fa-caret-down, li:hover #submenu_desktop-btn .fa-caret-down {
+    display: none;
+  }
+
+  li:hover #submenu_mobile-btn .fa-caret-up,   li:hover #submenu_desktop-btn .fa-caret-up {
+    display: block;
+  }
+
+  /* DESKTOP MENU STYLES */
+
+  .desktop-landing-menu {
+    display: block;
+  }
+  
+  .desktop__landing-menu-list {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: 1.4rem;
+  }
+
+  .desktop__landing-menu-list li {
+    list-style: none;
+}
+
+.desktop__landing-menu-list li a {
+      color: var(--text-one);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.submenu_desktop  {
+    padding-block: 1rem;
+    display: none;
+}
+
+/* #submenu_desktop-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 5px;
+} */
+
+/* MAIN SECTION STYLE */
+
+main {
+    margin-top: 1rem;
+}
+
+@media (prefers-color-scheme: light) { 
+    body {
+        background-color: var(--lightmode);
+        color: var(--darkmode);
+    }
+
+    header {
+        background-color: var(--primary);
+    }
+
+    #picsqueeze-logo {
+        color: var(--text-one);
+    }
+
+    a {
+        color: var(--darkmode);
+    }
+}
+
+@media screen and (min-width: 920px) {
+    .mobile-landing-menu, .mobile_menu-btn {
+        display: none;
+    }
+}
+
+@media (max-width: 920px) {
+    .desktop-landing-menu {
+        display: none;
+    }
+}
