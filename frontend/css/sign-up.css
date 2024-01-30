@@ -9,6 +9,7 @@
 :root{
     --primary-color:#0083D0;
     --white: #fff;
+    --footer-color:#F2F3F8;
 }
 /* End of Universal selector and color variables */
 
@@ -37,6 +38,8 @@ label{
     width:2cm;
     height: 0.9cm;
     margin-bottom: 0.2cm;
+    overflow-y: hidden;
+    background-color: transparent;
 }
 
 .authentication-icon{
@@ -45,6 +48,20 @@ label{
     display: block;
     margin: auto; 
 
+}
+.facebook{
+    border: none;
+    margin-right: 0.3cm;
+}
+
+.google{
+    border-color: var(--primary-color);
+    border-width: 2px;
+    border-radius: 5px;
+}
+
+.google:hover{
+    border-color: black;
 }
 
 .google-pic{
@@ -62,7 +79,7 @@ label{
 
 /* Start of input area */
  .signup__div1{
-    margin-top: 25vh;
+    margin-top: 18vh;
     margin-left: 8vw;
     margin-right: 8vw;
 }
@@ -75,28 +92,26 @@ label{
 }
 
 fieldset{
-    height:0.8cm;
+    height:1cm;
     width: 95%;
     display:flex;
     margin-top: 4px;
     border-radius: 5px;
     border-color: var(--primary-color);
-
 }
 
 .icon{
-    width:0.5cm;
+    width:0.7cm;
     margin-left: 4px;
     margin-top: 5px;
-    overflow-y: hidden;
 }
 
 input{
-    height:0.7cm ;
+    height:1cm ;
     width:85%;
     border: none;
     margin-left: 0.3cm;
-
+    font-size: 12pt;
 }
 
 .button{
@@ -113,25 +128,109 @@ input{
 /* end of input area */
 
 /* start of features side of the page */
+.compress{
+    width:100%;
+    height: 45vh;
+    display: block;
+    margin: auto;
+    overflow-y: hidden;
+}
+
 .signup__div2{
-    height:60vh;
-    background-color: #eee8ff;
+    height:85vh;
+    background-color: var(--footer-color);
 }
 .signup__div2-text{
-    font-size: 16pt;
+    font-size: 14pt;
     text-align: center;
     width: 100%;
 }
 
 span{
     font-weight: bold;
+    font-size: 16pt;
+}
+.login{
+    text-align: center;
+    margin-top: 0.3cm;
+}
+.laptop{
+    display: none;
 }
 /* end of features side of the page */
 
-/* Media Queries */
-/* .signup__div-div2{
-    width: 40%;
-    height: 100%;
-    background-color: blue;
-    margin-left: 60%;
-} */
+    /* Start of media queries */
+@media (min-width: 767px) {
+
+  *{
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    } 
+
+    /* Start of style for h1 element */
+
+    .company-name{
+        margin-top: 1.7cm;
+    }
+
+    /* Start of signup section */
+
+    .laptop{
+        display: block;
+        width: 60vw;
+        padding-left: 1cm;
+        padding-right: 0.3cm;
+        height: 100%;
+        background-color: var(--footer-color);
+    }
+    .signup__div2{
+        display: none;
+    }
+    .signup__div1{
+        display: flex;
+        width: 100%;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .signup{
+        display: flex;
+        margin-left: 1cm;
+    }
+       
+    input{
+        height:1.2cm ;
+    }
+    .button{
+        width: 20%;
+        margin-left: 22vw;
+        margin-top: 0.8cm;
+    }
+    .icon{
+        width:0.8cm;
+    }
+    fieldset{
+        width: 70%;
+        margin-left: 13%;
+        height:1.2cm ;
+        margin-top: 0.3cm;
+    }
+    /* End of signup section */
+
+    /* Start of the right hand section of the page */
+    .compress{
+        width:100%;
+        height: 8cm;
+        display: block;
+        margin: auto;
+    }
+    .signup__div2-par{
+        width:100%;
+        margin-top: 2cm;
+        font-size: 16pt;
+    }
+
+    /* End of the right hand section of the page */
+  }
+    /* End of media queries */
