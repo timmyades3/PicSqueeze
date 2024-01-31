@@ -36,15 +36,15 @@
 
 <body>
     <header>
-        <div class="landing-header">
-            <a href="#" id="picsqueeze-logo">PicSqueeze</a>
+        <div class="landing_header">
+            <a href="#" id="picsqueeze_logo">PicSqueeze</a>
             <button class="mobile_menu-btn">M</button>
-            <nav class="desktop-landing-menu">
+            <nav class="desktop__landing-menu">
                 <ul class="desktop__landing-menu-list">
                     <li><a href="#home">Image Resizer</a></li>
                     <li><a href="#about">Crop Image</a></li>
                     <li><a href="#contact">Image Compressor</a></li>
-                    <li>
+                    <li class="submenu_desktop-box">
                         <a href="#" id='submenu_desktop-btn'>Services <i class="fa fa-caret-down"
                                 aria-hidden="true"></i> <i class="fa fa-caret-up" aria-hidden="true"></i></a>
                         <!-- Submenu -->
@@ -59,8 +59,8 @@
                 </ul>
             </nav>
         </div>
-        <nav class="mobile-landing-menu">
-            <ul class="landing-menu-list">
+        <nav class="mobile__landing-menu">
+            <ul class="landing__menu-list">
                 <li><a href="#home">Image Resizer</a></li>
                 <li><a href="#about">Crop Image</a></li>
                 <li><a href="#contact">Image Compressor</a></li>
@@ -80,12 +80,33 @@
         </nav>
     </header>
     <main>
-        <section>
-            <div>
+        <section class="landing__hero">
+            <div class="landing__hero_text">
                 <h1>Image Compressor</h1>
                 <p>Best web app to compress image files online for free.</p>
             </div>
             <input type="file" name="select-image" placeholder="Select and Image" />
+            <div class="compression__settings container">
+                <button class="compression__settings-accordion-btn">Compression Settings (optional)</button>
+                <div class="compression__settings-accordion-panel">
+                    <div class="compression__settings-options">
+                        <span>
+                            <input type="radio" name="compress" checked="checked"> Max File Size (<strong>KB</strong>): 
+                        </span>
+                        <span>
+                            <input type="radio" name="compress"> Quality
+                        </span>
+                    </div>
+                    <aside>
+                        <!-- <div class="slidecontainer"> -->
+                            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                            <p>Compress Size: 50%</p>
+                          <!-- </div> -->
+                          <input type="number" name="file-size" class="quality-text" placeholder="Enter preferred file size (kb)" aria-placeholder="100" />
+                    </aside>
+                </div>
+            </div>
+
         </section>
     </main>
     <footer>
