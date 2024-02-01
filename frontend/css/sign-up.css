@@ -125,6 +125,10 @@ input{
     border-color: var(--white);
     color:var(--white)
 }
+.forgot-password{
+    text-align: center;
+    margin-top: 0.2cm;
+}
 /* end of input area */
 
 /* start of features side of the page */
@@ -229,6 +233,7 @@ span{
         width:100%;
         margin-top: 2cm;
         font-size: 16pt;
+        padding-bottom: 1cm;
     }
 
     /* End of the right hand section of the page */
