@@ -113,6 +113,9 @@ input{
     margin-left: 0.3cm;
     font-size: 12pt;
 }
+input:focus{
+outline: none;
+}
 
 .button{
     height:1.2cm;
