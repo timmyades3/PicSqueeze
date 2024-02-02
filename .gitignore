@@ -130,3 +130,5 @@ dmypy.json
 
 foo.crt
 foo.key
+db.sqlite3
+.gitignore

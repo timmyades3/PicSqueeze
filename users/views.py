@@ -46,11 +46,13 @@ class Custom_login(View):
 
             user = authenticate(request, username=username, password=password)
             
-            if '@' in username:
-                User.objects.get(email=username)
-            else:    
-                user_exist = User.objects.get(username=username) 
-            
+            # if '@' in username:
+            #     user_exist = User.objects.get(email=username)
+            # else:    
+            # user_exist = User.objects.filter(username=username).exists() 
+            # print(user_exist)
+            if user is not None and user.is_active == False: 
+                return redirect("verify-email", username=username)
             if user is not None:
                 if r_me:
                     request.session.set_expiry(600)
@@ -64,9 +66,9 @@ class Custom_login(View):
                 )
                 if 'next' in request.POST: 
                     return redirect(request.POST['next'])
-                return redirect("compress")
-            elif user is None and user_exist:
-                error_message = "Invalid password"
+                return redirect("compress")   
+            # elif user_exist == True and user is None :
+            #     error_message = "Invalid password"
             else:
                 error_message = "User does not exist."
                 return render(request, "login.html", {"error_message": error_message})
