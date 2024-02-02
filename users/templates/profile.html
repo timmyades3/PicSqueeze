@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>profile</title>
-</head>
-<body>
-  {% if messages %}
-  {% for message in messages%}
-  <h1>{{message}}</h1>
-  {% endfor %}
-  {% endif %}
+{% extends "base.html" %}
+
+{% block content %}
+
   <div>
     welcome {{ user.username }}
     {% if request.user.is_authenticated %}
@@ -28,10 +18,5 @@
   <div>
     <a href="{% url 'logout' %}">logout</a>
   </div>
-  <div>
-    <a href="{% url 'verification' %}">verification</a>
-  </div>
 
-  
-</body>
-</html>
+{% endblock content %}

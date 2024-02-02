@@ -133,10 +133,7 @@ def upload_to_s3(image_bytes, file_name, save_path):
     s3.upload_fileobj(image_bytes, settings.AWS_STORAGE_BUCKET_NAME, s3_key)
 
 
-class Download(View):
-    login_url = '/login/'
-    redirect_field_name = 'login'
-
+class Download(View): 
     def get(self, request, filename, save_path):
 
         s3_key = f'{save_path}/{filename}'
@@ -164,10 +161,7 @@ class Download(View):
         #     return response
 
 
-class Convert(LoginRequiredMixin, View):
-    login_url = '/login/'
-    redirect_field_name = 'login'
-
+class Convert(LoginRequiredMixin, View): 
     def post(self, request):
         form = UploadimageForm(request.POST, request.FILES)
         if form.is_valid():
@@ -215,10 +209,7 @@ class Convert(LoginRequiredMixin, View):
         return render(request, 'convert-img.html', {'form': form})
 
 
-class Resize(LoginRequiredMixin, View):
-    login_url = '/login/'
-    redirect_field_name = 'login'
-
+class Resize(LoginRequiredMixin, View): 
     def post(self, request):
         form = UploadimageForm(request.POST, request.FILES)
         if form.is_valid():

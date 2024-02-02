@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('COMPRESSOR_SECRET_KEY') 
+SECRET_KEY = config('COMPRESSOR_SECRET_KEY') 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', 'now.sh', '127.0.0.1', 'localhost','picsqueeze.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','Timmyades3.pythonanywhere.com']
 
 
 # Application definition
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'storages',
     'compressor1.apps.Compressor1Config',
     'users.apps.UsersConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -88,19 +90,11 @@ WSGI_APPLICATION = 'compressor.wsgi.application'
 DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': os.environ.get('PGDATABASE'),
-    #     'USER': os.environ.get('PGUSER'),
-    #     'PASSWORD': os.environ.get('PGPASSWORD'),
-    #     'HOST': os.environ.get('PGHOST'),
+    #     'NAME': config('PGDATABASE'),
+    #     'USER': config('PGUSER'),
+    #     'PASSWORD': config('PGPASSWORD'),
+    #     'HOST': config('PGHOST'),
     #     'PORT': '5432',
-    # }
-    # 'default': {
-    # 'ENGINE': 'django.db.backends.postgresql',
-    # 'NAME': 'neondb',
-    # 'USER': 'timmyades3',
-    # 'PASSWORD': 'JKvt5pN0XhqM',
-    # 'HOST': 'ep-rapid-wood-36794854.us-east-2.aws.neon.tech',
-    # 'PORT': '5432',
     # }
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -176,29 +170,29 @@ SOCIAL_AUTH_PIPELINE = ('social_core.pipeline.social_auth.social_details',
                         )
 
 EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = os.environ.get('COMPRESSOR_SENDGRID_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('COMPRESSOR_SENDGRID_SECRET_KEY')
+EMAIL_HOST_USER = config('COMPRESSOR_SENDGRID_HOST_USER')
+EMAIL_HOST_PASSWORD = config('COMPRESSOR_SENDGRID_SECRET_KEY')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = 'timileyinadesina1@gmail.com' 
 
-AWS_ACCESS_KEY_ID = os.environ.get('COMPRESSOR_AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('COMPRESSOR_AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.environ.get('COMPRESSOR_AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = config('COMPRESSOR_AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('COMPRESSOR_AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('COMPRESSOR_AWS_STORAGE_BUCKET_NAME')
 AWS_S3_SIGNATURE_NAME = 's3v4',
-AWS_S3_REGION_NAME = os.environ.get('COMPRESSOR_AWS_S3_REGION_NAME')
+AWS_S3_REGION_NAME = config('COMPRESSOR_AWS_S3_REGION_NAME')
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL =  None
 AWS_S3_VERITY = True
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('COMPRESSOR_FACEBOOK_KEY')
-SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('COMPRESSOR_FACEBOOK_SECRET_KEY')
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('COMPRESSOR_GOOGLE_KEY') 
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('COMPRESSOR_GOOGLE_SECRET_KEY')
-SOCIAL_AUTH_TWITTER_KEY = os.environ.get('COMPRESSOR_TWITTER_KEY')
-SOCIAL_AUTH_TWITTER_SECRET = os.environ.get('COMPRESSOR_TWITTER_SECRET_KEY')
+SOCIAL_AUTH_FACEBOOK_KEY = config('COMPRESSOR_FACEBOOK_KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET = config('COMPRESSOR_FACEBOOK_SECRET_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('COMPRESSOR_GOOGLE_KEY') 
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('COMPRESSOR_GOOGLE_SECRET_KEY')
+SOCIAL_AUTH_TWITTER_KEY = config('COMPRESSOR_TWITTER_KEY')
+SOCIAL_AUTH_TWITTER_SECRET = config('COMPRESSOR_TWITTER_SECRET_KEY')
  
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'compress'

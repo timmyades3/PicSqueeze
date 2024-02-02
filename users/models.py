@@ -1,9 +1,9 @@
+import secrets
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 
 # Create your models here.
-
 
 class Logged_in_user(models.Model):
     user = models.OneToOneField(
@@ -13,17 +13,18 @@ class Logged_in_user(models.Model):
     def __str__(self):
         return self.user.username
 
-class Verification_status(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE) 
-    is_verified = models.BooleanField(default = False)
-    verification_otp = models.IntegerField(null=True,blank=True)
-
+class OtpToken(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="otps")
+    otp_code = models.CharField(max_length=6, default= "".join([f"{secrets.randbelow(10)}" for _ in range(6)]))
+    otp_created_at = models.DateTimeField(auto_now_add=True)
+    otp_expires_at = models.DateTimeField(blank=True, null=True)
+    
+    
     def __str__(self):
-        return f'{self.user.username} verification status'
-
+        return self.user.username
+    
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE) 
-    termsandcondition = models.BooleanField(default=False,null=True)
    
     def __str__(self):
         return f'{self.user.username} profile'

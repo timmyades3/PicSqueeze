@@ -1,30 +1,9 @@
+{% extends "base.html" %}
+
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>sign-up</title>
-</head>
-
-<body>
-  {% if messages %}
-  {% for message in messages%}
-  <h1>{{message}}</h1>
-  {% endfor %}
-  {% endif %}
   <form action="" method="post">
     {% csrf_token %}
-    <label for="firstname">firstname</label>
-    <br>
-    <input type="text" name="first_name" id="firstname">
-    <br>
-    <label for="laststname">lastname</label>
-    <br>
-    <input type="text" name="last_name" id="lastname">
-    <br>
     <label for="username">username</label>
     <br>
     <input type="text" name="username" id="username">
@@ -41,9 +20,6 @@
     <br>
     <input type="password" name="password2" id="password2">
     <br>
-    <label for="t_and_c">terms and conditions</label>
-    <input type="checkbox" name="termsandcondition" id="t_and_c">
-    <br>
     <input type="submit" value="submit">
     {{ form.errors }}
   </form>
@@ -57,7 +33,5 @@
   <div>
     <a href="{% url 'login' %}">login</a>
   </div>
-</body>
 
-</html>
 {% endblock content %}

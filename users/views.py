@@ -5,55 +5,52 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Profile, Verification_status
-from .forms import Createuserform, Updateuserform, ProfileUpdateForm
+from .models import OtpToken
+from .forms import Createuserform, Updateuserform
 import random
-from django.core.mail import send_mail
-from django.conf import settings
-from django.template.loader import render_to_string
 from django.utils import timezone
+from .utils import Util
+from django.template.loader import render_to_string
+
 
 
 class Register(View, LoginRequiredMixin):
     def post(self, request):
-
         if request.user.is_authenticated:
-            return redirect('compress')
+            return redirect("compress")
         else:
             form = Createuserform(request.POST)
             if form.is_valid():
-                tac = request.POST.get('termsandcondition')
-                if tac:
-                    form.save()
-                    username = form.cleaned_data.get('username')
-                    messages.success(
-                        request, f'Welcome {username} you have succesfully created an account')
-                    return redirect('login')
-                else:
-                    messages.info(
-                        request, 'term and conditions must be accepted')
+                form.save()
+                username = form.cleaned_data.get("username")
+                return redirect("verify-email", username=username)
 
-            return render(request, 'register.html', {'form': form})
+            return render(request, "register.html", {"form": form})
 
     def get(self, request):
         if request.user.is_authenticated:
-            return redirect('compress')
+            return redirect("compress")
         else:
             form = Createuserform()
-        return render(request, 'register.html', {'form': form})
+        return render(request, "register.html", {"form": form})
 
 
 class Custom_login(View):
     def post(self, request):
         if request.user.is_authenticated:
-            return redirect('compress')
+            return redirect("compress")
         else:
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-            r_me = request.POST.get('r_me')
+            username = request.POST.get("username")
+            password = request.POST.get("password")
+            r_me = request.POST.get("r_me")
 
             user = authenticate(request, username=username, password=password)
-
+            
+            if '@' in username:
+                User.objects.get(email=username)
+            else:    
+                user_exist = User.objects.get(username=username) 
+            
             if user is not None:
                 if r_me:
                     request.session.set_expiry(600)
@@ -61,23 +58,132 @@ class Custom_login(View):
                     request.session.set_expiry(0)
 
                 login(request, user)
-                return redirect('compress')
+                messages.success(
+                    request,
+                    f"Welcome {username} you have succesfully created an account",
+                )
+                if 'next' in request.POST: 
+                    return redirect(request.POST['next'])
+                return redirect("compress")
+            elif user is None and user_exist:
+                error_message = "Invalid password"
             else:
-                error_message = 'Invalid username or password.'
-                return render(request, 'login.html', {'error_message': error_message})
+                error_message = "User does not exist."
+                return render(request, "login.html", {"error_message": error_message})
 
     def get(self, request):
         if request.user.is_authenticated:
+            return redirect("compress")
+        return render(request, "login.html")
+
+
+class Verify_email(View):
+    def post(self,request, username):
+        user = User.objects.get(username=username)
+        user_otp = OtpToken.objects.filter(user=user).last()
+        
+        # valid token
+        if user_otp.otp_code == request.POST['otp_code']:
+            
+            # checking for expired token
+            if user_otp.otp_expires_at > timezone.now():
+                user.is_active=True
+                user.save()
+                messages.success(request, "Account activated successfully!! You can Login.")
+                return redirect("login")
+            
+            # expired token
+            else:
+                messages.warning(request, "The OTP has expired, get a new OTP!")
+                return redirect("verify-email", username=user.username)
+        
+        # invalid otp code
+        else:
+            messages.warning(request, "Invalid OTP entered, enter a valid OTP!")
+            return redirect("verify-email", username=user.username)
+
+    def get(self,request,username):
+        user = User.objects.get(username = username)
+        if request.user.is_authenticated:
             return redirect('compress')
-        return render(request, 'login.html')
+        elif user.is_active == True:
+            return redirect('login')
+        # if user.is_superuser:
+        #     pass
+        
+        # else:
+        #     OtpToken.objects.create(user=user, otp_expires_at=timezone.now() + timezone.timedelta(minutes=5))
+        #     user.is_active=False 
+        #     user.save()
+        
+        
+        # # email credentials
+        # otp = OtpToken.objects.filter(user=user).last()
+       
+       
+        # subject="Email Verification"
+        # email_body = f"""
+        #                         Hi {user.username}, here is your OTP {otp.otp_code} 
+        #                         it expires in 5 minute, use the url below to redirect back to the website
+        #                         http://127.0.0.1:8000/verify-email/{user.username}
+                                
+        #                         """
+        # # sender = "clintonmatics@gmail.com"
+        # receiver = user.email 
+        # data = {'email_body':email_body, 'to_email':receiver, 'email_subject':subject}
+
+        # # send email
+        # Util.send_email(data)
+      
+        context = {}
+        return render(request, "verify_token.html", context)
+
+
+class ResendOtp(View):
+    def post(self,request):
+        if request.user.is_authenticated:
+            return redirect('compress')
+        user_email = request.POST["otp_email"]
+        
+        if User.objects.filter(email=user_email).exists():
+            user = User.objects.get(email=user_email)
+            otp = OtpToken.objects.create(user=user, otp_expires_at=timezone.now() + timezone.timedelta(minutes=5))
+            
+            
+            # email variables
+            subject="Email Verification"
+            context = {
+                'user': user,
+                'otp': otp.otp_code,
+                'protocol': 'https', 
+                'domain': '127.0.0.1:8000'
+            }
+            email_body = render_to_string("verification_email.html", context)
+
+            receiver = user.email
+        
+            data = {'email_body':email_body, 'to_email':receiver, 'email_subject':subject}
+
+            # send email
+            Util.send_email(data)
+
+            
+            messages.success(request, "A new OTP has been sent to your email-address")
+            return redirect("verify-email", username=user.username)
+
+        else:
+            messages.warning(request, "This email dosen't exist in the database")
+            return redirect("resend-otp")
+        
+
+    def get(self,request):
+        if request.user.is_authenticated:
+            return redirect('compress')               
+        return render(request, "resend_otp.html")
 
 
 class Profile(LoginRequiredMixin, View):
-    login_url = '/login/'
-    redirect_field_name = 'login'
-
     def post(self, request):
-
         u_form = Updateuserform(request.POST)
         if u_form.is_valid():
             u_form.save()
@@ -85,81 +191,23 @@ class Profile(LoginRequiredMixin, View):
     def get(self, request):
         u_form = Updateuserform()
         user_ip = self.get_ip_address(request)
-        context = {'user_ip': user_ip}
-        return render(request, 'profile.html', context)
+        context = {"user_ip": user_ip}
+        return render(request, "profile.html", context)
 
     def get_ip_address(self, request):
-        user_ip_address = request.META.get('HTTP_X_FORWARDED_FOR')
+        user_ip_address = request.META.get("HTTP_X_FORWARDED_FOR")
         if user_ip_address:
-            ip = user_ip_address.split(',')[0]
-            print(ip)
+            ip = user_ip_address.split(",")[0]
         else:
-            ip = request.META.get('REMOTE_ADDR')
-            print(ip)
+            ip = request.META.get("REMOTE_ADDR")
         return ip
 
 
-class Verification(LoginRequiredMixin, View):
-    OTP_EXPIRATION_TIME = 60
-
-    def generate_otp(self):
-        return random.randint(100000, 999999)
-   
-    def send_otp_email(self, otp, request):
-        user_email = request.user.email
-        template = render_to_string('verification_email.html', {
-                                    'name': request.user.first_name})
-        subject = 'Verification OTP'
-        message = template
-        from_email = settings.EMAIL_HOST_USER  # Replace with your email
-        recipient = user_email
-        send_mail(subject, message, from_email, recipient)
-
-    def post(self, request):
-        user_otp = request.POST.get('otp')
-        user = request.user
-        try:
-            verification_status = Verification_status.objects.get(user=user)
-        except Verification_status.DoesNotExist:
-            verification_status = None
-
-        if verification_status:
-            db_otp = verification_status.verification_otp
-            if user_otp == str(db_otp):
-                verification_status.is_verified = True
-                verification_status.save()
-            else:
-                verification_status.is_verified = False
-                verification_status.save()
-        else:
-            generated_otp = self.generate_otp()
-
-            Verification_status.objects.create(
-                user=user, verification_otp=generated_otp)
-
-        return render(request, 'verification.html')
-
-    def get(self, request):
-        user = request.user
-        
-        
-        
-        try:
-            verification_status = Verification_status.objects.get(user=user)
-        except Verification_status.DoesNotExist:
-            verification_status = None
-        if not verification_status:
-            generated_otp = self.generate_otp()
-            Verification_status.objects.create(
-                user=user, verification_otp=generated_otp)
-            
-        return render(request, 'verification.html')
-
 
 class Logoutuser(LoginRequiredMixin, View):
-    login_url = '/login/'
-    redirect_field_name = 'login'
+    login_url = "/login/"
+    redirect_field_name = "login"
 
     def get(self, request):
         logout(request)
-        return render(request, 'logout.html')
+        return redirect("login")
