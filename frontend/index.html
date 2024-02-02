@@ -80,18 +80,26 @@
         </nav>
     </header>
     <main>
-        <section class="landing__hero">
+        <section class="landing__hero container">
             <div class="landing__hero_text">
                 <h1>Image Compressor</h1>
                 <p>Best web app to compress image files online for free.</p>
             </div>
-            <input type="file" name="select-image" placeholder="Select and Image" />
-            <div class="compression__settings container">
+            <div class="select-image-input-box">
+                <i>ICON</i>
+                <label for="selectImage" class="select-image-input-label">
+                    <span>Select Image</span>
+                    <i>ICON</i>
+                </label>
+                <input type="file" name="selectImage" id="selectImage" placeholder="Select and Image"
+                    class="select-image-input" />
+            </div>
+            <div class="compression__settings">
                 <button class="compression__settings-accordion-btn">Compression Settings (optional)</button>
                 <div class="compression__settings-accordion-panel">
                     <div class="compression__settings-options">
                         <span>
-                            <input type="radio" name="compress" checked="checked"> Max File Size (<strong>KB</strong>): 
+                            <input type="radio" name="compress" checked="checked"> Max File Size (<strong>KB</strong>):
                         </span>
                         <span>
                             <input type="radio" name="compress"> Quality
@@ -99,14 +107,55 @@
                     </div>
                     <aside>
                         <!-- <div class="slidecontainer"> -->
-                            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-                            <p>Compress Size: 50%</p>
-                          <!-- </div> -->
-                          <input type="number" name="file-size" class="quality-text" placeholder="Enter preferred file size (kb)" aria-placeholder="100" />
+                        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                        <p>Compress Size: 50%</p>
+                        <!-- </div> -->
+                        <input type="number" name="file-size" class="quality-text"
+                            placeholder="Enter preferred file size (kb)" aria-placeholder="100" />
                     </aside>
                 </div>
             </div>
 
+        </section>
+        <section class="container picsqueeze__about">
+            <ul class="picsqueeze__about-list">
+                <li class="picsqueeze__about-list-item">
+                    <i>ICON</i>
+                    <h6>Perfect Quality</h6>
+                    <p>We intelligently apply compression to retain image quality while drastically reducing image size.
+                    </p>
+                </li>
+                <li class="picsqueeze__about-list-item">
+                    <i>ICON</i>
+                    <h6>Best Compression</h6>
+                    <p>We intelligently apply compression to retain image quality while drastically reducing image size.
+                    </p>
+                </li>
+                <li class="picsqueeze__about-list-item">
+                    <i>ICON</i>
+                    <h6>Easy To Use</h6>
+                    <p>We intelligently apply compression to retain image quality while drastically reducing image size.
+                    </p>
+                </li>
+                <li class="picsqueeze__about-list-item">
+                    <i>ICON</i>
+                    <h6>Image Formats</h6>
+                    <p>We intelligently apply compression to retain image quality while drastically reducing image size.
+                    </p>
+                </li>
+                <li class="picsqueeze__about-list-item">
+                    <i>ICON</i>
+                    <h6>Privacy Guaranteed</h6>
+                    <p>We intelligently apply compression to retain image quality while drastically reducing image size.
+                    </p>
+                </li>
+                <li class="picsqueeze__about-list-item">
+                    <i>ICON</i>
+                    <h6>It’s Free</h6>
+                    <p>We intelligently apply compression to retain image quality while drastically reducing image size.
+                    </p>
+                </li>
+            </ul>
         </section>
     </main>
     <footer>
