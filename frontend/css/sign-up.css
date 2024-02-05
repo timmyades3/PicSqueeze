@@ -10,6 +10,7 @@
     --primary-color:#0083D0;
     --white: #fff;
     --footer-color:#F2F3F8;
+    --black: black;
 }
 /* End of Universal selector and color variables */
 
@@ -55,7 +56,7 @@ label{
 }
 
 .google{
-    border-color: var(--primary-color);
+    border-color: var(--black);
     border-width: 2px;
     border-radius: 5px;
 }
@@ -88,7 +89,6 @@ label{
     height: 100vh;
     background-color: #fff;
     padding-bottom: 1cm;
-    
 }
 
 fieldset{
@@ -113,8 +113,14 @@ input{
     margin-left: 0.3cm;
     font-size: 12pt;
 }
+
 input:focus{
 outline: none;
+}
+.reset-password{
+    text-align: center;
+    margin-top: 0.2cm;
+    margin-bottom: 0.1cm;
 }
 
 .button{
@@ -128,9 +134,17 @@ outline: none;
     border-color: var(--white);
     color:var(--white)
 }
+
 .forgot-password{
     text-align: center;
     margin-top: 0.2cm;
+}
+
+a{
+    color: var(--primary-color)
+}
+.note{
+    font-size: small;
 }
 /* end of input area */
 
@@ -164,6 +178,10 @@ span{
 .laptop{
     display: none;
 }
+
+.forget{
+        background-color: var(--white);
+    }
 /* end of features side of the page */
 
     /* Start of media queries */
@@ -178,7 +196,7 @@ span{
     /* Start of style for h1 element */
 
     .company-name{
-        margin-top: 1.7cm;
+        margin-top: 1cm;
     }
 
     /* Start of signup section */
@@ -188,7 +206,7 @@ span{
         width: 60vw;
         padding-left: 1cm;
         padding-right: 0.3cm;
-        height: 100%;
+        height: 100vh;
         background-color: var(--footer-color);
     }
     .signup__div2{
@@ -207,7 +225,7 @@ span{
     }
        
     input{
-        height:1.2cm ;
+        height:1.1cm ;
     }
     .button{
         width: 20%;
@@ -221,24 +239,44 @@ span{
         width: 70%;
         margin-left: 13%;
         height:1.2cm ;
-        margin-top: 0.3cm;
+        margin-top: 0.2cm;
     }
     /* End of signup section */
 
     /* Start of the right hand section of the page */
     .compress{
         width:100%;
-        height: 8cm;
+        height: 7cm;
         display: block;
         margin: auto;
     }
+    
     .signup__div2-par{
         width:100%;
-        margin-top: 2cm;
+        margin-top: 1.5cm;
         font-size: 16pt;
         padding-bottom: 1cm;
     }
 
     /* End of the right hand section of the page */
   }
+
+  @media(max-width:767px){
+    .signup__div{
+        height: 100%;
+        margin-bottom: 0;
+        margin-top: 1cm;
+    }
+    
+    .signup__div2{
+        height:85vh;
+        margin-top: 2cm;
+    }
+    .signup__div1{
+        margin-top: 1cm;
+        margin-left: 8vw;
+        margin-right: 8vw;
+    } 
+  }
+
     /* End of media queries */
