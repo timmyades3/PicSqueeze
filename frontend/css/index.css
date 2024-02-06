@@ -11,7 +11,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Rubik', sans-serif;
     box-sizing: border-box;
 }
 
@@ -55,6 +55,10 @@ header {
 a {
     text-decoration: none;
     color: var(--text-one) !important;
+}
+
+p {
+    font-size: 1rem;
 }
 
 #picsqueeze_logo {
@@ -207,6 +211,7 @@ li:hover #submenu_desktop-btn .fa-caret-up {
 
 main {
     padding-top: 1rem;
+    width: 100vw;
 }
 
 .landing__hero,
@@ -235,8 +240,7 @@ main {
 }
 
 .select-image-input-box i {
-    font-size: 2.5rem;
-    font-weight: 800;
+    font-size: 3rem;
     color: var(--lightmode);
 }
 
@@ -336,6 +340,10 @@ main {
     row-gap: 10px;
 }
 
+.compression__settings-options {
+    color: var(--dark-greyish);
+}
+
 .compression__settings-accordion-panel aside {
     padding-left: 25px;
     width: 100%;
@@ -392,10 +400,31 @@ main {
     row-gap: 1rem;
 }
 
+.picsqueeze__about-list-item i {
+    font-size: 1.6rem;
+}
+
 .picsqueeze__about-list-item h6 {
-    font-size: 1.3rem;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 500;
     color: var(--lightmode);
+}
+
+/* --- PICSQUEEZE HOW TO USE SECTION --- */
+
+.picsqueeze_use {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+.picsqueeze_use h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 @media (prefers-color-scheme: light) {
@@ -444,9 +473,10 @@ main {
 }
 
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
     .picsqueeze__about-list {
         grid-template-columns: repeat(3, 1fr);
+        column-gap: 20px;
     }
 }
 
