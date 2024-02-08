@@ -1,7 +1,81 @@
-{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="{% static 'css/sign-up.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+</head>
 
+<body>
+    <section class="signup">
+        <div class="signup__div1">
+
+            <div class="signup__div">
+                <h1 class="company-name">PicSqueeze Image Compressor</h1>
+                <p class="text1">Create new account</p>
+
+                <div class="authentication-section">
+                    <a href="{% url 'social:begin' 'twitter' %}"><button class="authentication facebook"><img src="{% static 'images\twitter.png' %}" class="authentication-icon"></button></a>
+                    <a href="{% url 'social:begin' 'google-oauth2' %}"><button class="authentication google"><img src="{% static 'images\google.png' %}" class="authentication-icon google-pic"></button></a>
+                </div>
+
+                <form>
+                    {% csrf_token %}
+                    <fieldset>
+                        <label for="name"><img src="{% static 'images\user.svg' %}" class="icon"></label>
+                        <input type="text" id="name" placeholder="Username" name="username" required>
+                    </fieldset>
+                    <fieldset>
+                        <label for="email"><img src="{% static 'images\email.png' %}" class="icon"></label>
+                        <input type="email" id="email" placeholder="Email" name="email" required>
+                    </fieldset>
+                    <fieldset>
+                        <label for="password"><img src="{% static 'images\lock.png' %}" class="icon"></label>
+                        <input type="password" id="password" placeholder="Password" name="password1" required>
+                    </fieldset>
+                    <fieldset>
+                        <label for="password"><img src="{% static 'images\lock.png' %}" class="icon"></label>
+                        <input type="password" id="password" placeholder="Confirm password" name="password2" required>
+                    </fieldset>
+
+                    <button type="submit" class="button">Sign up</button>
+                    <p class="login">Already a member? <a href="{% url 'login' %}">Login</a></p>
+                    <p class="note login">By creating an account, you agree to Pic squeeze Terms of Service and Privacy Policy</p>
+                </form>
+            </div>
+            
+            <div class="signup__div-div2 laptop"> 
+                <img src="{% static 'images\Compress.jpg' %}" class="compress">
+                <p class="signup__div2-par">
+                    <span>Boost your productivity with Image Compressor!</span>
+                    <br> Our comprehensive suite of tools allows you to effortlessly convert, edit 
+                    <br>and secure your documents. Experience seamless document management from anywhere, 
+                    <br>making your workflow efficient and effective.
+                </p>
+            </div>
+        </div>
+
+        <div class="signup__div2 ">
+            <img src="{% static 'images\Compress.jpg' %}" class="compress">
+            <div class="signup__div2-text">
+                <p class="signup__div2-par">
+                    <span>Boost your productivity with Image Compressor!</span>
+                    <br> Our comprehensive suite of tools allows you to effortlessly convert, edit 
+                    <br>and secure your documents. Experience seamless document management from anywhere, 
+                    <br>making your workflow efficient and effective.
+                </p>
+            </div>
+        </div>
+
+    </section>
+</body>
+<!-- </html>
   <form action="" method="post">
     {% csrf_token %}
     <label for="username">username</label>
@@ -32,6 +106,6 @@
   <hr>
   <div>
     <a href="{% url 'login' %}">login</a>
-  </div>
+  </div> -->
 
-{% endblock content %}
+</html>
