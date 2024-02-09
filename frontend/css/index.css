@@ -25,15 +25,27 @@ body {
 
 .container {
     width: 100vw;
-    padding-inline: 48px;
-    padding-block: 1rem;
+    padding: 1rem 48px;
 }
 
 /* --- UTILITIES FOR SPECIAL FUNCTIONS --- */
 
-/* .hidden {
-    display: none;
-} */
+.hidden {
+    display: none !important;
+}
+
+.overlay {
+    display: block;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--darkmode);
+    opacity: 0.5;
+    top: 70px;
+    left: 0;
+    z-index: 40;
+    transition: all 0.4s;
+}
 
 /* --- HEADER STYLES --- */
 
@@ -68,10 +80,29 @@ p {
 }
 
 /* --- MOBILE MENU STYLES --- */
+.mobile__landing-menu {
+    width: 100%;
+    background-color: #0083D0;
+    position: absolute;
+    left: 0;
+    top: 70px;
+    z-index: 50;
+    transition: all 0.4s;
+}
 
-.landing-menu {
-    display: flex;
-    justify-content: flex-start;
+.mobile_menu-btn, .mobile_menu-btn-close {
+    background-color: transparent;
+    color: var(--lightmode);
+    font-size: 1.1rem;
+    padding: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+.mobile_menu-btn {
+    display: block;
 }
 
 .landing__menu-list li {
@@ -98,16 +129,13 @@ p {
     font-size: 0.9rem;
 }
 
-/* Submenu Mobile Styles */
+/* SUBMENU MOBILE STYLES */
 .submenu_mobile {
     display: none;
     padding-left: 48px;
     padding-right: 48px;
 }
 
-#submenu_mobile-btn {
-    border: none !important;
-}
 
 #submenu_mobile-btn,
 #submenu_desktop-btn {
@@ -176,10 +204,6 @@ li:hover #submenu_desktop-btn .fa-caret-up {
     position: relative;
 }
 
-.submenu_desktop-box:hover .submenu_desktop {
-    display: flex;
-}
-
 .submenu_desktop {
     padding: 0.7rem;
     display: none;
@@ -195,17 +219,14 @@ li:hover #submenu_desktop-btn .fa-caret-up {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.082);
 }
 
+.submenu_desktop-box:hover .submenu_desktop {
+    display: flex;
+}
+
 .submenu_desktop a {
     color: var(--darkmode) !important;
     white-space: nowrap;
 }
-
-/* #submenu_desktop-btn {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    column-gap: 5px;
-} */
 
 /* MAIN SECTION STYLE */
 
@@ -259,7 +280,7 @@ main {
     text-align: center;
     column-gap: 15px;
     padding: 0 10px;
-    transition: all 0.32s;
+    transition: all 0.4s;
 }
 
 .select-image-input-label span,
@@ -427,6 +448,57 @@ main {
     text-align: center;
 }
 
+/* --- FOOTER SECTION STYLES --- */
+
+footer {
+    width: 100vw;
+    height: auto;
+    margin-top: 2rem;
+}
+
+.footer__link-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 3rem;
+    background-color: var(--dark-greyish);
+    padding: 4rem 0;
+}
+
+.footer__links, .footer__links ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer__links h6 {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--lightmode);
+}
+
+.footer__links ul {
+    list-style: none;
+    row-gap: 25px;
+}
+
+.footer__links-list-item a {
+    font-size: 1rem;
+    color: var(--lightmode);
+}
+
+.footer__rights {
+    width: 100%;
+    height: 100%;
+    background-color: var(--darkmode);
+    color: var(--text-one);
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 2rem 0;
+}
+
 @media (prefers-color-scheme: light) {
     body {
         background-color: var(--lightmode);
@@ -434,6 +506,15 @@ main {
     }
 
     header {
+        background-color: var(--primary);
+    }
+
+    .footer__link-container {
+        background-color: var(--primary-light);
+        color: var(--darkmode) !important;
+    }
+
+    .footer__rights {
         background-color: var(--primary);
     }
 
@@ -466,15 +547,16 @@ main {
 }
 
 @media screen and (min-width: 920px) {
+
     .mobile__landing-menu,
-    .mobile_menu-btn {
+    .mobile_menu-btn, .mobile_menu-btn-close, .overlay {
         display: none;
     }
 }
 
 
 @media (min-width: 768px) {
-    .picsqueeze__about-list {
+    .picsqueeze__about-list, .footer__link-container {
         grid-template-columns: repeat(3, 1fr);
         column-gap: 20px;
     }
