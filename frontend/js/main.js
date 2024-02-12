@@ -1,21 +1,8 @@
-const menuButton = document.querySelector(".mobile_menu-btn");
-const modalOverlay = document.querySelector(".overlay");
-const menuCloseButton = document.querySelector(".mobile_menu-btn-close");
+let slider = document.getElementById("myRange");
+let output = document.getElementById("rangeValue");
 
-const menuToggleHandler = () => {
-    const navMenu = document.querySelector(".mobile__landing-menu");
+output.innerHTML = "Compress Size: " + slider.value + "%"; // Display the default slider value
 
-    navMenu.classList.toggle("hidden");
-    menuButton.classList.toggle("hidden");
-    menuCloseButton.classList.toggle("hidden");
-    modalOverlay.classList.toggle("hidden");
-
-    let navAriaHidden = navMenu.classList.contains("hidden") ? "true" : "false";
-    navMenu.ariaHidden = navAriaHidden;
+slider.oninput = function() {
+    output.innerHTML = "Compress Size: " + this.value + "%";
 }
-
-menuButton.addEventListener('click', menuToggleHandler )
-
-modalOverlay.addEventListener('click', menuToggleHandler)
-
-menuCloseButton.addEventListener('click', menuToggleHandler)
