@@ -1,0 +1,348 @@
+:root {
+    --primary: #0083D0;
+    --primary-light: #63bbee;
+    --darkmode: #1C1E25;
+    --greyish: #b4aaaa;
+    --dark-greyish: #292828;
+    --lightmode: #ffffff;
+    --text-one: #f8f0f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+    box-sizing: border-box;
+}
+
+/* --- GENERAL STYLES --- */
+
+body {
+    background-color: var(--darkmode);
+    color: #f8f0f0;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100vw;
+    padding: 1rem 48px;
+}
+
+
+/* --- UTILITIES FOR SPECIAL FUNCTIONS --- */
+
+.hidden {
+    display: none !important;
+}
+
+.overlay {
+    display: block;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--darkmode);
+    opacity: 0.5;
+    top: 70px;
+    left: 0;
+    z-index: 40;
+    transition: all 0.4s;
+}
+
+/* --- HEADER STYLES --- */
+
+header {
+    background-color: var(--darkmode);
+    color: #f8f0f0;
+    border-bottom: 1px solid var(--greyish);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.164); */
+}
+
+.landing_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 20px;
+    padding-inline: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-one) !important;
+}
+
+p {
+    font-size: 1rem;
+}
+
+#picsqueeze_logo {
+    color: var(--text-one);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* --- MOBILE MENU STYLES --- */
+.mobile__landing-menu {
+    width: 100%;
+    background-color: #0083D0;
+    position: absolute;
+    left: 0;
+    top: 70px;
+    z-index: 50;
+    transition: all 0.4s;
+}
+
+.mobile_menu-btn, .mobile_menu-btn-close {
+    background-color: transparent;
+    color: var(--lightmode);
+    font-size: 1.1rem;
+    padding: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+.mobile_menu-btn {
+    display: block;
+}
+
+.landing__menu-list li {
+    list-style: none;
+    border-top: 1px solid var(--darkmode);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.landing__menu-list li:first-child {
+    border-top: 1px solid var(--darkmode);
+    border-bottom: none;
+}
+
+.landing__menu-list li:last-child {
+    border-top: 1px solid var(--darkmode);
+    border-bottom: none;
+}
+
+.landing__menu-list li a {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* SUBMENU MOBILE STYLES */
+.submenu_mobile {
+    display: none;
+    padding-left: 48px;
+    padding-right: 48px;
+}
+
+
+#submenu_mobile-btn,
+#submenu_desktop-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.submenu_mobile li {
+    border: none !important;
+}
+
+li:hover .submenu_mobile {
+    display: block;
+}
+
+.submenu_mobile a {
+    display: block;
+    white-space: nowrap;
+}
+
+#submenu_mobile-btn .fa-caret-down,
+#submenu_desktop-btn .fa-caret-down {
+    display: block;
+}
+
+#submenu_mobile-btn .fa-caret-up,
+#submenu_desktop-btn .fa-caret-up {
+    display: none;
+}
+
+li:hover #submenu_mobile-btn .fa-caret-down,
+li:hover #submenu_desktop-btn .fa-caret-down {
+    display: none;
+}
+
+li:hover #submenu_mobile-btn .fa-caret-up,
+li:hover #submenu_desktop-btn .fa-caret-up {
+    display: block;
+}
+
+/* DESKTOP MENU STYLES */
+
+.desktop__landing-menu {
+    display: block;
+}
+
+.desktop__landing-menu-list {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: 1.4rem;
+}
+
+.desktop__landing-menu-list li {
+    list-style: none;
+}
+
+.desktop__landing-menu-list li a {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.submenu_desktop-box {
+    position: relative;
+}
+
+.submenu_desktop {
+    padding: 0.7rem;
+    display: none;
+    flex-direction: column;
+    row-gap: 10px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: absolute;
+    top: 30px;
+    right: -40px;
+    background-color: var(--text-one);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.082);
+}
+
+.submenu_desktop-box:hover .submenu_desktop {
+    display: flex;
+}
+
+.submenu_desktop a {
+    color: var(--darkmode) !important;
+    white-space: nowrap;
+}
+
+
+
+/* --- FOOTER SECTION STYLES --- */
+
+footer {
+    width: 100vw;
+    height: auto;
+    margin-top: 2rem;
+}
+
+.footer__link-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 3rem;
+    background-color: var(--dark-greyish);
+    padding: 4rem 0;
+}
+
+.footer__links, .footer__links ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer__links h6 {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--lightmode);
+}
+
+.footer__links ul {
+    list-style: none;
+    row-gap: 25px;
+}
+
+.footer__links-list-item a {
+    font-size: 1rem;
+    color: var(--lightmode);
+}
+
+.footer__rights {
+    width: 100%;
+    height: 100%;
+    background-color: var(--darkmode);
+    color: var(--text-one);
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 2rem 0;
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: var(--lightmode);
+        color: var(--dark-greyish);
+    }
+
+    header {
+        background-color: var(--primary);
+    }
+
+    .footer__link-container {
+        background-color: var(--primary-light);
+        color: var(--darkmode) !important;
+    }
+
+    .footer__rights {
+        background-color: var(--primary);
+    }
+
+    #picsqueeze_logo {
+        color: var(--text-one);
+    }
+
+    a {
+        color: var(--dark-greyish);
+    }
+
+    .landing__menu-list li {
+        border-top: 1px solid var(--lightmode);
+    }
+
+    .landing__menu-list li:first-child {
+        border-top: 1px solid var(--lightmode);
+        border-bottom: none;
+    }
+
+    .landing__menu-list li:last-child {
+        border-top: 1px solid var(--lightmode);
+        border-bottom: none;
+
+    }
+}
+
+
+@media screen and (min-width: 920px) {
+
+    .mobile__landing-menu,
+    .mobile_menu-btn, .mobile_menu-btn-close, .overlay {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .picsqueeze__about-list, .footer__link-container {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 20px;
+    }
+}
+
+@media (max-width: 920px) {
+    .desktop__landing-menu {
+        display: none;
+    }
+}
