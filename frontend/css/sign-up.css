@@ -245,10 +245,11 @@ span{
 
     /* Start of the right hand section of the page */
     .compress{
+       object-fit: contain;
+    }
+    .compress-div{
+        height:50%;
         width:100%;
-        height: 50%;
-        display: block;
-        margin: auto;
     }
     
     .signup__div2-par{
