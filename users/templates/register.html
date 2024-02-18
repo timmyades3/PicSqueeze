@@ -25,8 +25,9 @@
                     <a href="{% url 'social:begin' 'google-oauth2' %}"><button class="authentication google"><img src="{% static 'images\google.png' %}" class="authentication-icon google-pic"></button></a>
                 </div>
 
-                <form>
+                <form action="" method="post">
                     {% csrf_token %}
+                    {{ form.errors }}
                     <fieldset>
                         <label for="name"><img src="{% static 'images\user.svg' %}" class="icon"></label>
                         <input type="text" id="name" placeholder="Username" name="username" required>
