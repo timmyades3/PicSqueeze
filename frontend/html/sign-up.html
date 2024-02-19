@@ -8,13 +8,12 @@
     <link rel="stylesheet" href="../css/sign-up.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <section class="signup">
-        <div class="signup__div1">
-
+    <main class="signup__main">
+        <section class="signup__container">
             <div class="signup__div">
                 <h1 class="company-name">PicSqueeze Image Compressor</h1>
                 <p class="text1">Create new account</p>
@@ -25,52 +24,42 @@
                 </div>
 
                 <form>
-                    <fieldset>
+                    <fieldset class="form__inputs">
                         <label for="name"><img src="user.svg" class="icon"></label>
                         <input type="text" id="name" placeholder="Name" required>
                     </fieldset>
-                    <fieldset>
+                    <fieldset class="form__inputs">
                         <label for="email"><img src="email.png" class="icon"></label>
                         <input type="email" id="email" placeholder="Email" required>
                     </fieldset>
-                    <fieldset>
+                    <fieldset class="form__inputs">
                         <label for="password"><img src="lock.png" class="icon"></label>
                         <input type="password" id="password" placeholder="Password" required>
                     </fieldset>
-                    <fieldset>
+                    <fieldset class="form__inputs">
                         <label for="password"><img src="lock.png" class="icon"></label>
                         <input type="password" id="confirm-password" placeholder="Confirm password" required>
                     </fieldset>
 
-                    <button type="submit" class="button">Sign up</button>
+                    <button type="submit" class="form__btn">Sign up</button>
                     <p class="login">Already a member? <a href="./login.html">Login</a></p>
-                    <p class="note login">By creating an account, you agree to Pic squeeze Terms of Service and Privacy Policy</p>
+                    <p class="note">By creating an account, you agree to Pic squeeze Terms of Service and Privacy Policy</p>
                 </form>
             </div>
+        </section>       
             
-            <section class="signup__div-div2 laptop">
-                <div class="compress-div"><img src="Compress.png" class="compress"></div>
-                <p class="signup__div2-par">
-                    <span>Boost your productivity with Image Compressor!</span>
-                    <br> Our comprehensive suite of tools allows you to effortlessly convert, edit 
-                    <br>and secure your documents. Experience seamless document management from anywhere, 
-                    <br>making your workflow efficient and effective.
-                </p>
-            </section>
-        </div>
 
-        <div class="signup__div2 ">
-            <img src="Compress.png" class="compress">
-            <div class="signup__div2-text">
-                <p class="signup__div2-par">
-                    <span>Boost your productivity with Image Compressor!</span>
-                    <br> Our comprehensive suite of tools allows you to effortlessly convert, edit 
-                    <br>and secure your documents. Experience seamless document management from anywhere, 
-                    <br>making your workflow efficient and effective.
+        <aside class="signup__info">
+            <img src="Compress.png" class="signup__img-compress">
+            <div class="signup__info-text">
+                <p>
+                    Increase productivity with Image Compressor!
+                     Convert, edit, and secure your documents effortlessly.
+                      Sign up now!
                 </p>
             </div>
-        </div>
+        </aside>
 
-    </section>
+    </main>
 </body>
 </html>
