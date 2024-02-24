@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resize image</title>
+    <link rel="icon" type="image/png" href="resize.png" />
+    <link rel="stylesheet" href="..\css\resizer.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+</head>
+<body>
+    <main>
+        <section class="image-resize">
+            <div class="image-resize__text">
+                <h1>Picsqueeze</h1>
+                <p>Select any image to resize for free</p>
+            </div>
+
+            <div class="image-resize__select-image">
+                <i class="fa fa-upload" aria-hidden="true" id="fa-upload"></i>
+                <label for="selectImage" class="image-resize__select-image_label">
+                    <span>Select Image</span>
+                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                </label>
+                <input type="file" name="selectImage" id="selectImage" placeholder="Select and Image"
+                    class="image-resize__select-image_input" />
+                <!-- <label class="image-resize__select-image_label" for="resize-img">
+                    <p>Select Image</p>
+                </label>
+                <input type="file" id="resize-img" class="image-resize__select-image_input" accept="image/*"> -->
+            </div>
+        </section>
+
+        <aside class="size-indicator">
+            <label for="width">Width</label>
+            <input class='size-indicator__input' id="width" type="number" >
+            <label for="height">Height</label>
+            <input id="height" class='size-indicator__input' type="number" >
+            <button type="submit" class="size-indicator__btn">Submit</button>
+        </aside>
+    </main>
+</body>
+</html>
