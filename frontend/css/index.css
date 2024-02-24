@@ -41,7 +41,7 @@ main {
     width: 100vw;
 }
 
-.landing__hero,
+.landing__hero, .image__converter,
 .select-image-input-box {
     display: flex;
     flex-direction: column;
@@ -51,11 +51,11 @@ main {
     text-align: center;
 }
 
-.landing__hero_text {
+.landing__hero_text, .image__converter_text {
     margin-bottom: 4rem;
 }
 
-.landing__hero_text h1 {
+.landing__hero_text h1, .image__converter_text h1 {
     padding: 10px;
 }
 
@@ -76,7 +76,7 @@ main {
 }
 
 .select-image-input-label {
-    background-color: var(--lightmode);
+    background-color: var(--dark-greyish);
     color: var(--primary);
     border-radius: 5px;
     cursor: pointer;
@@ -86,7 +86,7 @@ main {
     text-align: center;
     column-gap: 15px;
     padding: 0 10px;
-    transition: all 0.4s;
+    transition: all 0.4s ease-in-out;
 }
 
 .select-image-input-label span,
@@ -187,6 +187,11 @@ main {
     height: 25px;
 }
 
+#rangeValue {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
 .quality-text {
     width: 100%;
     height: auto;
@@ -202,6 +207,50 @@ main {
     font-size: 0.7rem;
     color: var(--dark-greyish);
     opacity: 0.7;
+}
+
+/* --- CONVERSION SETTINGS --- */
+
+.conversion__settings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.conversion__settings h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+ /* Style the custom select */
+ .custom-select {
+    position: relative;
+    width: 200px;
+}
+
+.custom-select select {
+  background-color: var(--primary);
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+.custom-select select option {
+  padding: 30px;
+}
+
+.custom-select select:focus {
+  border-radius: 0px;
 }
 
 /* --- WHY CHOOSE PICSQUEEZ --- */
@@ -266,6 +315,10 @@ main {
     .picsqueeze__about-list-item h6 {
         color: var(--dark-greyish);
     }
+    .select-image-input-label {
+        background-color: var(--lightmode);
+
+    }
 }
 
 @media (min-width: 768px) {
@@ -274,3 +327,4 @@ main {
         column-gap: 20px;
     }
 }
+
