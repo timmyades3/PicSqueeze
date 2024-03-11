@@ -1,0 +1,125 @@
+/* Universal selector and color variables */
+:root {
+    --primary: #0083D0;
+    --primary-light: #63bbee;
+    --darkmode: #1C1E25;
+    --greyish: #b4aaaa;
+    --dark-greyish: #292828;
+    --lightmode: #ffffff;
+    --text-one: #f8f0f0;
+}
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+    box-sizing: border-box;
+}
+/* End of universal selector and color variables */
+
+/* General Styles */
+body {
+    background-color: var(--darkmode);
+    color: var(--text-one);
+    overflow-x: hidden;
+}
+
+.image-resize__text{
+    text-align: center;
+    margin-top: 1.5cm;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    margin-bottom:1cm;
+}
+
+.image-resize__text h1{
+    font-size: 20pt;
+}
+
+.image-resize__select-image{
+    height:9cm;
+    width: 90vw;
+    background-color: var(--primary);
+    display:flex;
+    border: 10px solid var(--primary-light);
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+.image-resize__select-image_label span,
+.image-resize__select-image_label i {
+    height: 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-resize__select-image_label i {
+    border-left: 1px solid var(--primary-light);
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.image-resize__select-image_label{
+        background-color: var(--lightmode);
+        color: var(--primary);
+        border-radius: 5px;
+        cursor: pointer;
+        width: auto;
+        height: auto;
+        display: flex;
+        text-align: center;
+        column-gap: 15px;
+        padding: 0 10px;
+        transition: all 0.4s;
+    }   
+
+#fa-upload {
+    margin-bottom: 3cm;
+    position: absolute;
+    font-size: 40pt;
+    font-weight: 600;
+}
+
+.image-resize__select-image_label:hover{
+    background-color: var(--primary-light);
+    color: var(--text-one);
+}
+
+.image-resize__select-image_input{
+    display: none;
+    position: absolute;
+}
+
+.size-indicator{
+    display: flex;
+    flex-direction: column;
+    color: var(--greyish);
+    font-weight: bold;
+    font-size:16pt;
+    margin-top: 1cm;
+    padding-left: 0.5cm;
+    padding-right: 0.5cm;
+}
+
+.size-indicator__input{
+    height: 1cm;
+    width:3cm;
+    font-size: 16pt;
+    margin-bottom: 0.5cm;
+}
+
+.size-indicator__btn{
+    height: 1.2cm;
+    border-radius: 10px;
+    font-size: 14pt;
+    font-weight: bold;
+    background-color: var(--primary);
+    border: none;
+    color: var(--text-one);
+    margin-bottom:1cm ;
+}
