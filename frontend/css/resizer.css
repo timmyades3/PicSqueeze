@@ -123,3 +123,40 @@ body {
     color: var(--text-one);
     margin-bottom:1cm ;
 }
+
+/* Password Success */
+.tick_image{
+    width:5cm;
+    margin-top: 25vh;
+    margin-bottom: 1cm;
+}
+.email_image{
+    margin-bottom: 0.7cm;
+    width:5cm;
+    margin-top: 25vh;
+}
+.success{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.form__btn {
+    height: 1.2cm;
+    min-width: 200px;
+    margin-top: 0.6cm;
+    border-radius: 10px;
+    font-size: 14pt;
+    font-weight: bold;
+    background-color: var(--primary);
+    border: none;
+    color: var(--white)
+}
+a{
+    text-decoration: none;
+    color: var(--white)
+}
+.success__text{
+    font-size:20pt;
+    margin-bottom: 0.2cm;
+}
