@@ -4,12 +4,17 @@
     padding: 0;
     overflow-x: hidden;
     font-family: 'Rubik', sans-serif;
+    color:var(--text-one);
 }
 
 :root {
-    --primary-color: #0083D0;
-    --white: #fff;
-    --footer-color: #F2F3F8;
+    --primary: #0083D0;
+    --primary-light: #63bbee;
+    --darkmode: #1C1E25;
+    --greyish: #b4aaaa;
+    --dark-greyish: #292828;
+    --lightmode: #ffffff;
+    --text-one: #f8f0f0;
     --black: black;
 }
 
@@ -18,6 +23,12 @@
 /* Start of signup section */
 
 /* Start of style for h1 and p elements */
+body{
+    background-color: var(--darkmode);
+}
+.signup__main{
+    background-color: var(--dark-greyish);
+}
 .company-name {
     text-align: center;
     font-size: 30pt;
@@ -44,7 +55,6 @@ label {
     height: 0.9cm;
     margin-bottom: 0.2cm;
     overflow-y: hidden;
-    background-color: transparent;
 }
 
 .authentication-icon {
@@ -100,7 +110,7 @@ label {
 .signup__div {
     /* width:100%; */
     height: 100vh;
-    background-color: #fff;
+    background-color: var(--darkmode);
     padding: 1cm;
 }
 
@@ -118,13 +128,13 @@ form {
     width: 80%;
     display: flex;
     margin-top: 4px;
-    border: 2px solid var(--primary-color);
+    border: 2px solid var(--dark-greyish);
     border-radius: 10px;
 }
 
 .icon {
-    width: 0.7cm;
-    margin-left: 4px;
+    width: 0.8cm;
+    margin-left: 10px;
     margin-top: 5px;
 }
 
@@ -135,6 +145,7 @@ input {
     margin-left: 0.3cm;
     font-size: 12pt;
     padding: 0px 10px;
+    background-color: var(--dark-greyish);
 }
 
 input:focus {
@@ -155,7 +166,7 @@ input:focus {
     border-radius: 10px;
     font-size: 14pt;
     font-weight: bold;
-    background-color: var(--primary-color);
+    background-color: var(--primary);
     border: none;
     color: var(--white)
 }
