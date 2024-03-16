@@ -168,7 +168,8 @@ input:focus {
     font-weight: bold;
     background-color: var(--primary);
     border: none;
-    color: var(--white)
+    color: var(--white);
+    cursor: pointer;
 }
 
 .forgot-password {
@@ -228,22 +229,14 @@ a {
 }
 /* end of features side of the page */
 
-/* Start of media queries */
-@media (min-width: 767px) {
 
+/* Start of media queries */
+@media (min-width: 768px) {
     * {
         overflow: hidden;
         margin: 0;
         padding: 0;
     }
-
-    /* Start of style for h1 element */
-
-    /* .company-name {
-        margin-top: 1cm;
-    } */
-
-    /* Start of signup section */
 
     .reset-password{
         margin-top: 2cm;
@@ -271,6 +264,8 @@ a {
     .icon {
         width: 0.8cm;
     }
+
+    
 
     /* End of signup section */
 
