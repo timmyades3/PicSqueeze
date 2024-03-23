@@ -16,7 +16,6 @@ function previewFile () {
   uploadIcon.classList.remove ('hidden')
 
   const file = fileInput.files[0];
-  console.log (file);
   const fileName = file.name;
 
   if (file) {
@@ -35,7 +34,6 @@ function previewFile () {
       const name = document.createElement ('p');
       let sizeApproxKb = file.size / 1024;
       let sizeApproxMb = file.size / (1024 * 1024);
-      console.log(sizeApproxKb, sizeApproxMb)
       name.textContent = `${fileName} - ${sizeApproxKb < 1024 ? sizeApproxKb.toFixed(2) + "KB" : sizeApproxMb.toFixed(2) + "MB"}`;
       preview.appendChild (name);
     };
