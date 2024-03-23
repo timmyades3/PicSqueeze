@@ -40,23 +40,24 @@
                 <h1>Image Compressor</h1>
                 <p>Best web app to compress image files online for free.</p>
             </div>
-            <div class="select-image-input-box">
-                <i class="fa fa-upload" aria-hidden="true"></i>
+            <form class="select-image-input-box">
+                <div id="preview"  class="hidden"></div>
+                <i id="uploadIcon" class="fa fa-upload" aria-hidden="true"></i>
                 <label for="selectImage" class="select-image-input-label">
                     <span>Select Image</span>
                     <i class="fa fa-caret-down" aria-hidden="true"></i>
                 </label>
-                <input type="file" name="selectImage" id="selectImage" placeholder="Select and Image"
-                    class="select-image-input" />
-            </div>
+                <input type="file" name="filename" id="selectImage" placeholder="Select and Image"
+                    class="select-image-input" accept="image/png, image/jpeg" onchange="previewFile()" />
+            </form>
             <div class="compression__settings">
                 <button class="compression__settings-accordion-btn">Compression Settings (optional)</button>
                 <div class="compression__settings-accordion-panel">
-                    <div class="compression__settings-options">
+                    <form class="compression__settings-options">
                         <span>
                             <input type="radio" name="compress" checked="checked"> Max File Size (<strong>KB</strong>):
                         </span>
-                    </div>
+                    </form>
                     <aside>
                             <input type="range" min="1" max="100" value="20" class="slider" id="myRange">
                             <p id="rangeValue"></p>
