@@ -22,6 +22,15 @@ body {
     color: #f8f0f0;
     overflow-x: hidden;
     overflow-y: auto;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100vw;
+    height: auto;
+    min-height: 100vh;
 }
 
 .container {
@@ -54,16 +63,15 @@ body {
 header {
     background-color: var(--darkmode);
     color: #f8f0f0;
-    border-bottom: 1px solid var(--greyish);
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.164); */
+    width: 100%;
 }
 
 .landing_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-block: 20px;
-    padding-inline: 20px;
+    padding-block: 30px;
+    padding-inline: 30px;
 }
 
 a {
@@ -269,15 +277,18 @@ li:hover #submenu_desktop-btn .fa-caret-up {
     border-radius: 10px;
 }
 
+/* --- BASE MAIN SECTION STYLES --- */
+
+.base_main {
+    padding-inline: 30px;
+    padding-block: 20px;
+}
+
 /* --- FOOTER SECTION STYLES --- */
 
 footer {
     width: 100vw;
     height: auto;
-    margin-top: 2rem;
-    position: static;
-    bottom: 0;
-    left: 0;
 }
 
 .footer__link-container {
@@ -383,12 +394,12 @@ footer, .footer__rights {
         display: none;
     }
 
-    footer {
-        position: absolute;
-        /* --- Footer is set to absolute --- */
+    /* footer {
+        position: fixed;
+        margin-top: 2rem;
         bottom: 0;
         left: 0;
-    }
+    } */
 
 }
 
