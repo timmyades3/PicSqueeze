@@ -8,12 +8,14 @@
     --lightmode: #ffffff;
     --text-one: #f8f0f0;
 }
+
 * {
     margin: 0;
     padding: 0;
     font-family: 'Rubik', sans-serif;
     box-sizing: border-box;
 }
+
 /* End of universal selector and color variables */
 
 /* General Styles */
@@ -23,29 +25,36 @@ body {
     overflow-x: hidden;
 }
 
-.image-resize__text{
+/* CHNAGES MADE HERE */
+.image-resize__text {
     text-align: center;
     margin-top: 1.5cm;
     display: flex;
     flex-direction: column;
-    gap:10px;
-    margin-bottom:1cm;
+    gap: 10px;
+    margin-bottom: 1cm;
 }
 
-.image-resize__text h1{
+.image-resize__text h1 {
     font-size: 20pt;
 }
 
-.image-resize__select-image{
-    height:9cm;
-    width: 90vw;
+.image-resize__select-image {
     background-color: var(--primary);
-    display:flex;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
     border: 10px solid var(--primary-light);
     margin: auto;
     justify-content: center;
     align-items: center;
+    height: auto;
+    min-height: 9cm;
+    width: 90vw;
+    padding: 20px 10px;
+
 }
+
 .image-resize__select-image_label span,
 .image-resize__select-image_label i {
     height: 40px;
@@ -64,19 +73,19 @@ body {
     padding-left: 10px;
 }
 
-.image-resize__select-image_label{
-        background-color: var(--lightmode);
-        color: var(--primary);
-        border-radius: 5px;
-        cursor: pointer;
-        width: auto;
-        height: auto;
-        display: flex;
-        text-align: center;
-        column-gap: 15px;
-        padding: 0 10px;
-        transition: all 0.4s;
-    }   
+.image-resize__select-image_label {
+    background-color: var(--lightmode);
+    color: var(--primary);
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    display: flex;
+    text-align: center;
+    column-gap: 15px;
+    padding: 0 10px;
+    transition: all 0.4s;
+}
 
 #fa-upload {
     margin-bottom: 3cm;
@@ -85,62 +94,76 @@ body {
     font-weight: 600;
 }
 
-.image-resize__select-image_label:hover{
+.image-resize__select-image_label:hover {
     background-color: var(--primary-light);
     color: var(--text-one);
 }
 
-.image-resize__select-image_input{
+.image-resize__select-image_input {
     display: none;
     position: absolute;
 }
 
-.size-indicator{
+.size-indicator {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    column-gap: 30px;
     color: var(--greyish);
     font-weight: bold;
-    font-size:16pt;
+    font-size: 16pt;
     margin-top: 1cm;
-    padding-left: 0.5cm;
-    padding-right: 0.5cm;
+    padding: auto 0.5cm;
 }
 
-.size-indicator__input{
+
+.size-indicator__input {
     height: 1cm;
-    width:3cm;
+    width: 3cm;
     font-size: 16pt;
     margin-bottom: 0.5cm;
+    border-radius: 5px;
+    border: 2px solid var(--primary-light);
+    padding: 0 10px;
 }
 
-.size-indicator__btn{
-    height: 1.2cm;
-    border-radius: 10px;
-    font-size: 14pt;
-    font-weight: bold;
-    background-color: var(--primary);
-    border: none;
-    color: var(--text-one);
-    margin-bottom:1cm ;
+.size-indicator__input::placeholder {
+    color: gray;
+    opacity: 0.5;
 }
+
+.size-indicator__input:focus {
+    border: 2px solid var(--primary);
+    outline: none;
+}
+
+.size-indicator label {
+    color: var(--primary);
+}
+
+/* CHANGES MADE HERE END */
+
 
 /* Password Success */
-.tick_image{
-    width:5cm;
+.tick_image {
+    width: 5cm;
     margin-top: 25vh;
     margin-bottom: 1cm;
 }
-.email_image{
+
+.email_image {
     margin-bottom: 0.7cm;
-    width:5cm;
+    width: 5cm;
     margin-top: 25vh;
 }
-.success{
+
+.success {
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
+
 .form__btn {
     height: 1.2cm;
     min-width: 200px;
@@ -152,11 +175,13 @@ body {
     border: none;
     color: var(--white)
 }
-a{
+
+a {
     text-decoration: none;
     color: var(--white)
 }
-.success__text{
-    font-size:20pt;
+
+.success__text {
+    font-size: 20pt;
     margin-bottom: 0.2cm;
 }

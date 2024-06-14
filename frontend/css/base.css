@@ -116,14 +116,20 @@ p {
 .mobile_menu-btn {
     display: block;
 }
-
-.landing__menu-list li {
-    list-style: none;
-    border-top: 1px solid var(--darkmode);
-    padding-top: 20px;
-    padding-bottom: 20px;
+/* WORKED HERE */
+.landing__menu-list {
+    width: 100%;
+    height: 100%;
 }
 
+.landing__menu-list li {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    /* border-top: 1px solid var(--darkmode); */
+    padding: 20px 20px;
+}
+/* STOPPED HERE */
 .landing__menu-list li:first-child {
     border-top: 1px solid var(--darkmode);
     border-bottom: none;
@@ -134,21 +140,26 @@ p {
     border-bottom: none;
 }
 
+/* WWORKED HERE */
 .landing__menu-list li a {
-    padding-left: 3rem;
-    padding-right: 3rem;
+    width: 80vw;
+   /* height: 100%; */
     font-weight: 600;
     font-size: 0.9rem;
+    border-radius: 10px;
+    padding: 10px;
 }
+/* STOPPED HERE */
 
-.landing__menu-list li {
+.landing__menu-list li a {
     transition: all 0.4s ease-in-out;
 
 }
-
-.landing__menu-list li:hover {
+/* WORKED HERE */
+.landing__menu-list li a:hover {
     background-color: #63bbee;
 }
+/* STOPPED HERE */
 
 /* SUBMENU MOBILE STYLES */
 .submenu_mobile {
@@ -165,7 +176,9 @@ p {
     align-items: center;
     column-gap: 5px;
 }
+/* POSSIBLY DELETION START */
 
+/* 
 .submenu_mobile li {
     border: none !important;
     transition: all 0.4s ease-in-out;
@@ -173,7 +186,10 @@ p {
 
 .submenu_mobile li:hover {
     background: var(--primary);
-}
+} */
+
+/* POSSIBLY DELETION END */
+
 
 li:hover .submenu_mobile {
     display: block;
@@ -225,18 +241,24 @@ li:hover #submenu_desktop-btn .fa-caret-up {
     list-style: none;
     padding-block: 10px;
     padding-inline: 8px;
-    border-radius: 10px;
     transition: all 0.4s ease-in-out;
 }
 
-.desktop__landing-menu-list li:hover {
-    background-color: var(--primary-light);
-}
-
+/* WORKED HERE */
 .desktop__landing-menu-list li a {
     font-weight: 600;
     font-size: 0.9rem;
+    border-radius: 10px;
+    padding: 10px;
 }
+
+.desktop__landing-menu-list li a:hover {
+    background-color: var(--primary-light);
+    border-radius: 10px;
+    color: white !important;
+}
+/* STOPPED HERE */
+
 
 .submenu_desktop-box {
     position: relative;
@@ -272,10 +294,7 @@ li:hover #submenu_desktop-btn .fa-caret-up {
     white-space: nowrap;
 }
 
-.submenu_desktop li:hover {
-    background: var(--lightmode);
-    border-radius: 10px;
-}
+/* DELETED AND ITEM HERE */
 
 /* --- BASE MAIN SECTION STYLES --- */
 

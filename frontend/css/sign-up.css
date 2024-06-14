@@ -147,11 +147,12 @@ input {
     padding: 0px 10px;
     background-color: var(--dark-greyish);
 }
-
+/* WORKED ON THIS HERE */
 input:focus {
     outline: none;
-    background-color: #D9E5FF;
+    background-color: #171718;
 }
+/* WORKED ON THIS HERE ENDS */
 
 .reset-text {
     text-align: center;
