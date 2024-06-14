@@ -1,8 +1,93 @@
-{% extends "base.html" %}
+{% load static %}
 
 {% block content %}
+<!DOCTYPE html>
+<html lang="en">
 
-  <form action="" method="post">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/sign-up.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main class="signup__main">
+        <section class="signup__container">
+            <div class="signup__div">
+                <h1 class="company-name">PicSqueeze Image Compressor</h1>
+                <p class="text1">Login to your account</p>
+
+                <div class="authentication-section">
+                  <a href="{% url 'social:begin' 'twitter' %}?next={{ request.GET.next }}"><button class="authentication facebook"><img src="{% static 'images\twitter.png' %}" class="authentication-icon"></button></a>
+                  <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.GET.next }}"><button class="authentication google"><img src="{% static 'images\google.png' %}" class="authentication-icon google-pic"></button></a>
+                </div>
+
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% if error_message %}
+                    <h6>{{ error_message }}</h6>
+                    {% endif %}
+                    <div class="form__inputs">
+                        <label for="email"><img src="{% static 'images\email.png' %}" class="icon"></label>
+                        <input type="text" id="email" placeholder="Enter email or username" name="username" required>
+                    </div>
+                    <div class="form__inputs">
+                        <label for="password"><img src="{% static 'images\lock.png' %}" class="icon"></label>
+                        <input type="password" id="password" placeholder="Password" name="password" minlength="8" required>
+                    </div>
+                    <p class="login"><a href="{% url 'password_reset' %}" >Forgot your password?</a></p>
+                    {% if request.GET.next %}
+                     <input type="hidden" name="next" value="{{request.GET.next}}" />
+                    {% endif %}
+                    <button type="submit" class="form__btn">Login</button>
+                    <p class="login">Don't have an account? <a href="{% url 'register' %}">Create an account</a></p>
+                </form>
+            </div>
+            
+            <!-- This your code -->
+            <!-- <aside class="signup__div-div2 laptop">
+                <img src="Compress.png" class="compress">
+                <p class="signup__div2-par">
+                    <span>Log in to your workspace</span>
+                    <br> Enter your email and your password to 
+                    <br>access your account. You are one step closer 
+                    <br>to enhancing your images 
+                </p>
+            </aside> -->
+
+            <!-- This is the corrected one -->
+        </section>
+        <aside class="signup__info">
+            <img src="{% static 'images\Compress.png' %}" class="signup__img-compress">
+            <div class="signup__info-text">
+                <p>Log in to your workspace, Enter your email and your password to 
+                access your account. You are one step closer 
+                to enhancing your images </p>
+            </div>
+        </aside>
+
+        <!-- <div class="signup__div2">
+            <img src="Compress.png" class="compress">
+            <div class="signup__div2-text">
+                <p class="signup__div2-par">
+                    <span>Log in to your workspace</span>
+                    <br> Enter your email and your password to 
+                    <br>access your account. You are one step closer 
+                    <br>to enhancing your images 
+                </p>
+            </div>
+        </div> -->
+
+    </main>
+</body>
+</html>
+
+
+  <!-- <form action="" method="post">
     {% csrf_token %}
     {% if error_message %}
     <h6>{{ error_message }}</h6>
@@ -35,6 +120,6 @@
   <hr>
   <div>
     <a href="{% url 'register' %}">register</a>
-  </div>
+  </div> -->
 
 {% endblock content %}

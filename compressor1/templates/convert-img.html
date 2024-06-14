@@ -1,4 +1,42 @@
-{% block content %}
+{% extends "base.html" %}
+{% load static %}
+{% block pageContent %}
+
+<section class="container image__converter ">
+    <div class="image__converter_text">
+        <h1>Image Compressor</h1>
+        <p>Best web app to compress image files online for free.</p>
+    </div>
+    <div class="select-image-input-box">
+        <i class="fa fa-upload" aria-hidden="true"></i>
+        <label for="selectImage" class="select-image-input-label">
+            <span>Select Image</span>
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+        </label>
+        <input type="file" name="selectImage" id="selectImage" placeholder="Select and Image"
+            class="select-image-input" />
+    </div>
+    <div class="conversion__settings">
+        <h4>Select the format you want to convert to:</h4>
+        <div class="custom-select" style="width:200px;">
+            <select>
+              <option value="0">Select Format:</option>
+              <option value="1">PNG</option>
+              <option value="2">JPG</option>
+              <option value="3">WEBP</option>
+            </select>
+          </div>
+    </div>
+</section>
+   
+{% endblock pageContent %}
+
+{% block convert_extra_css %}
+<title>PicSqueeze - Image Converter</title>
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock convert_extra_css %}
+
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,11 +48,11 @@
 </head>
 
 <body>
-  <!--{% if messages %}
+  {% if messages %}
       {% for message in messages%}
         <h1>{{message}}</h1>
       {% endfor %}
-    {% endif %}-->
+    {% endif %}
   <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token%}
     <label for="image">image</label>
@@ -46,5 +84,4 @@
 
 </body>
 
-</html>
-{% endblock content%}
+</html> -->

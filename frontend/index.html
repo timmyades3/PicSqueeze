@@ -16,7 +16,7 @@
     Link the Site logo properly!
 -->
 
-    <!--  Appearance of content when shared on Twitter -->
+    <!--  Appearance of content when shared on Twitter -->     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="PicSqueeze - Image Compression">
     <meta name="twitter:description" content="Powerful image compression tools for fast-loading images.">
@@ -40,32 +40,34 @@
                 <h1>Image Compressor</h1>
                 <p>Best web app to compress image files online for free.</p>
             </div>
-            <form class="select-image-input-box">
-                <div id="preview"  class="hidden"></div>
-                <i id="uploadIcon" class="fa fa-upload" aria-hidden="true"></i>
-                <label for="selectImage" class="select-image-input-label">
-                    <span>Select Image</span>
-                    <i class="fa fa-caret-down" aria-hidden="true"></i>
-                </label>
-                <input type="file" name="filename" id="selectImage" placeholder="Select and Image"
-                    class="select-image-input" accept="image/png, image/jpeg" onchange="previewFile()" />
-            </form>
-            <div class="compression__settings">
-                <button class="compression__settings-accordion-btn">Compression Settings (optional)</button>
-                <div class="compression__settings-accordion-panel">
-                    <form class="compression__settings-options">
-                        <span>
-                            <input type="radio" name="compress" checked="checked"> Max File Size (<strong>KB</strong>):
-                        </span>
-                    </form>
-                    <aside>
-                            <input type="range" min="1" max="100" value="20" class="slider" id="myRange">
-                            <p id="rangeValue"></p>
-                        <input type="number" name="file-size" class="quality-text"
-                            placeholder="Enter preferred file size (kb)" aria-placeholder="100" />
-                    </aside>
+            <form action="" method="post" style="width: 80%;" >
+                <div class="select-image-input-box">
+                    <div id="preview"  class="hidden"></div>
+                    <i id="uploadIcon" class="fa fa-upload" aria-hidden="true"></i>
+                    <label for="selectImage" class="select-image-input-label">
+                        <span>Select Image</span>
+                        <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </label>
+                    <input type="file" name="filename" id="selectImage" placeholder="Select and Image"
+                        class="select-image-input" accept="image/png, image/jpeg" onchange="previewFile()" />
                 </div>
-            </div>
+                <div class="compression__settings">
+                    <button class="compression__settings-accordion-btn">Compression Settings (optional)</button>
+                    <div class="compression__settings-accordion-panel">
+                        <div class="compression__settings-options">
+                            <span>
+                                <input type="radio" name="compress" checked="checked"> Max File Size (<strong>KB</strong>):
+                            </span>
+                        </div>
+                        <aside>
+                                <input type="range" min="1" max="100" value="20" class="slider" id="myRange">
+                                <p id="rangeValue"></p>
+                            <input type="number" name="file-size" class="quality-text"
+                                placeholder="Enter preferred file size (kb)" aria-placeholder="100" />
+                        </aside>
+                    </div>
+                </div>
+            </form>
 
         </section>
         <section class="container picsqueeze__about">

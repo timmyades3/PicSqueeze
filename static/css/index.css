@@ -1,0 +1,475 @@
+:root {
+    --primary: #0083D0;
+    --primary-light: #63bbee;
+    --darkmode: #1C1E25;
+    --greyish: #b4aaaa;
+    --dark-greyish: #292828;
+    --lightmode: #ffffff;
+    --text-one: #f8f0f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+    box-sizing: border-box;
+}
+
+/* --- GENERAL STYLES --- */
+
+body {
+    background-color: var(--darkmode);
+    color: #f8f0f0;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100vw;
+    padding: 1rem 48px;
+}
+
+/* --- UTILITIES FOR SPECIAL FUNCTIONS --- */
+
+.hidden {
+    display: none !important;
+}
+
+/* MAIN SECTION STYLE */
+
+main {
+    padding-top: 1rem;
+    width: 106vw;
+}
+
+.landing__hero, .image__converter,
+.select-image-input-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 2rem;
+    text-align: center;
+}
+
+.landing__hero_text, .image__converter_text {
+    margin-bottom: 4rem;
+}
+
+.landing__hero_text h1, .image__converter_text h1 {
+    padding: 10px;
+}
+
+.select-image-input-box {
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+    padding-block: 20px;
+    background-color: var(--primary);
+    border: 10px solid var(--primary-light);
+}
+
+.select-image-input-box i {
+    font-size: 2.5rem;
+    color: var(--lightmode);
+}
+
+.select-image-input {
+    display: none;
+}
+
+.select-image-input-label {
+    background-color: var(--dark-greyish);
+    color: var(--primary);
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    display: flex;
+    text-align: center;
+    column-gap: 15px;
+    padding: 0 10px;
+    transition: all 0.4s ease-in-out;
+}
+
+.select-image-input-label span,
+.select-image-input-label i {
+    height: 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.select-image-input-label i {
+    border-left: 1px solid var(--primary-light);
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.select-image-input-label:hover {
+    opacity: 0.9;
+}
+
+.custom-file-input:focus+.select-image-input-label {
+    outline: 1px solid var(--primary-light);
+}
+
+#preview p {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--lightmode);
+}
+
+.file-preview {
+    max-width: 250px;
+    max-height: 250px;
+    object-fit: cover;
+  }
+
+
+/* --- IMAGES COMPRESSION CUSTOME SETTINGS STYLES ---*/
+
+.compression__settings {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.compression__settings-accordion-btn {
+    background-color: var(--primary);
+    color: var(--dark-greyish);
+    font-size: 1.2rem;
+    color: var(--text-one);
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: 1px solid var(--primary);
+    outline: none;
+    border-radius: 10px 10px 0px 0px;
+    transition: all 0.4s;
+}
+
+.compression__settings-accordion-btn:hover {
+    background-color: var(--primary-light);
+}
+
+.compression__settings-accordion-panel {
+    padding: 10px 18px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 0px 0px 10px 10px;
+    border-left: 1px solid var(--primary);
+    border-right: 1px solid var(--primary);
+    border-bottom: 1px solid var(--primary);
+}
+
+.compression__settings-options,
+.compression__settings-accordion-panel aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    row-gap: 10px;
+}
+
+.compression__settings-options {
+    color: var(--dark-greyish);
+}
+
+.compression__settings-accordion-panel aside {
+    padding-left: 25px;
+    width: 100%;
+}
+
+.slider {
+    width: 100%;
+    height: 15px;
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    width: 25px;
+    height: 25px;
+}
+
+
+#rangeValue {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: black;
+}
+
+.quality-text {
+    width: 100%;
+    height: auto;
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    outline: none;
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    color: var(--darkmode);
+}
+
+.quality-text::placeholder {
+    font-size: 0.7rem;
+    color: var(--dark-greyish);
+    opacity: 0.7;
+}
+
+/* --- CONVERSION SETTINGS --- */
+
+.conversion__settings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.conversion__settings h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+ /* Style the custom select */
+ .custom-select {
+    position: relative;
+    width: 200px;
+}
+
+.custom-select select {
+  background-color: var(--primary);
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+.custom-select select option {
+  padding: 30px;
+}
+
+.custom-select select:focus {
+  border-radius: 0px;
+}
+
+/* --- WHY CHOOSE PICSQUEEZ --- */
+
+.picsqueeze__about {
+    margin-top: 48px;
+    margin-bottom: 48px;
+}
+
+.picsqueeze__about-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 3rem;
+    list-style: none;
+    justify-items: center;
+}
+
+.picsqueeze__about-list-item {
+    display: flex;
+    flex-direction: column;
+    max-width: 250px;
+    text-align: center;
+    row-gap: 1rem;
+}
+
+.picsqueeze__about-list-item i {
+    font-size: 1.6rem;
+}
+
+.picsqueeze__about-list-item h6 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--lightmode);
+}
+
+/* --- PICSQUEEZE HOW TO USE SECTION --- */
+
+.picsqueeze_use {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+
+/* Start of Set Password */
+.set_password__header {
+    width: 100vw;
+    height: 10vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--primary);
+    color: var(--text-one);
+    z-index: 10;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.set_password__header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.set_password__main {
+    width: 100vw;
+    height: 100vh;
+    padding-top: 12vh;
+    background-color: var(--darkmode);
+}
+
+.set_password__container  {
+    width: 100%;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    row-gap: 15px;
+}
+
+.set_password__container, .set_password_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.set_password_form {
+    padding: 0 20px;
+    margin: 0 auto;
+    row-gap: 15px;
+    
+}
+
+.set_password__main h3 {
+    font-size: 1.8rem;
+}
+
+.set_password_form button {
+    width: 60%;
+    background-color: var(--primary);
+    color: var(--text-one);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    transition: all 0.4s;
+    margin: 0 auto;
+}
+
+.set_password__input {
+    display: flex;
+    flex-direction: column;
+}
+
+.set_password__input label {
+    font-weight: 600;
+    font-size: 0.9rem;
+
+}
+
+.set_password__input input {
+    width: 80vw;
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: var(--white);
+    color: white;
+    margin: 10px 5px;
+    flex: 1;
+    border: none;
+    font-size: 12pt;
+    border: 2px solid var(--greyish);
+    transition: all 0.2s;
+}
+
+.set_password__input input::placeholder {
+    color: #1C1E25;
+}
+
+.set_password__input input:focus {
+    outline: 2px solid var(--primary);
+    border: 2px solid transparent;
+
+}
+
+.set_password__instruction {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.set_password__instruction li {
+    list-style-type: square;
+    margin-left: 25px;
+}
+
+
+
+/* End of Set Password */
+
+.picsqueeze_use h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: var(--lightmode);
+        color: var(--dark-greyish);
+    }
+
+    a {
+        color: var(--dark-greyish);
+    }
+    .picsqueeze__about-list-item h6 {
+        color: var(--dark-greyish);
+    }
+    .select-image-input-label {
+        background-color: var(--lightmode);
+
+    }
+
+    .set_password__main {
+        background-color: var(--lightmode);
+    }
+}
+
+@media (min-width: 768px) {
+    .picsqueeze__about-list {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 20px;
+    }
+
+    .set_password__input input {
+        width: 50vw;
+    }
+
+    .set_password_form button {
+        width: 20vw;
+    }
+}
+

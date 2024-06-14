@@ -1,5 +1,116 @@
-{% block content %}
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block pageContent %}
+
+        <section class="container landing__hero ">
+            <div class="landing__hero_text">
+                <h1>Image Compressor</h1>
+                <p>Best web app to compress image files online for free.</p>
+            </div>
+            <form action="" action="" method="post" enctype="multipart/form-data" style="width: 80%;">
+                {% csrf_token%}
+                <div class="select-image-input-box">
+                    <div id="preview"  class="hidden"></div>
+                    <i id="uploadIcon" class="fa fa-upload" aria-hidden="true"></i>
+                    <label for="selectImage" class="select-image-input-label">
+                        <span>Select Image</span>
+                        <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </label>
+                    <input type="file" name="image" id="selectImage" placeholder="Select an Image"
+                        class="select-image-input"  onchange="previewFile()" />
+                </div>
+                <div class="compression__settings">
+                    <button class="compression__settings-accordion-btn">Compression Settings (optional)</button>
+                    <div class="compression__settings-accordion-panel">
+                        <div class="compression__settings-options">
+                            <span>
+                                <input type="radio" name="compress"  multiple checked="checked"> Max File Size (<strong>KB</strong>):
+                            </span>
+                            <input type="submit" value="submit" />
+                        </div>
+                        <aside>
+                                <input type="range" name="quality" min="1" max="100" value="20" class="slider" id="myRange">
+                                <p id="rangeValue"></p>
+                            <!-- <input type="number" name="file-size" class="quality-text"
+                                placeholder="Enter preferred file size (kb)" aria-placeholder="100" /> -->
+                        </aside>
+                    </div>
+                </div>  
+            </form>
+            {% if compress_download_link %}
+            <a href="{{ compress_download_link }}"><button>Download Compressed Image</button></a>
+            {% endif %}    
+
+        
+        </section>
+        <section class="container picsqueeze__about">
+            <ul class="picsqueeze__about-list">
+                <li class="picsqueeze__about-list-item">
+                    <i class="fa fa-file" aria-hidden="true"></i>
+                    <h6>Perfect Quality</h6>
+                    <p>We intelligently apply compression to retain image quality while drastically reducing image size.
+                    </p>
+                </li>
+                <li class="picsqueeze__about-list-item">
+                    <i class="fa fa-trophy" aria-hidden="true"></i>
+                    <h6>Best Compression</h6>
+                    <p>We intelligently apply compression to retain image quality while drastically reducing image size.
+                    </p>
+                </li>
+                <li class="picsqueeze__about-list-item">
+                    <i class="fa fa-bolt" aria-hidden="true"></i>
+                    <h6>Easy To Use</h6>
+                    <p>We intelligently apply compression to retain image quality while drastically reducing image size.
+                    </p>
+                </li>
+                <li class="picsqueeze__about-list-item">
+                    <i class="fa fa-compress" aria-hidden="true"></i>
+                    <h6>Image Formats</h6>
+                    <p>We intelligently apply compression to retain image quality while drastically reducing image size.
+                    </p>
+                </li>
+                <li class="picsqueeze__about-list-item">
+                    <i class="fa fa-user-secret" aria-hidden="true"></i>
+                    <h6>Privacy Guaranteed</h6>
+                    <p>We intelligently apply compression to retain image quality while drastically reducing image size.
+                    </p>
+                </li>
+                <li class="picsqueeze__about-list-item">
+                    <i class="fa fa-heart" aria-hidden="true"></i>
+                    <h6>It’s Free</h6>
+                    <p>We intelligently apply compression to retain image quality while drastically reducing image size.
+                    </p>
+                </li>
+            </ul>
+        </section>
+        <section class="container picsqueeze_use">
+            <h4>How to compress images?</h4>
+            <ol>
+                <li>Click on the "Select Images" button to select JPG, JPEG or PNG files.</li>
+                <li>Tool will automatically compress images. Or you can adjust the quality with our visual editor.</li>
+                <li>Click the "Download" button to save your compressed images.</li>
+            </ol>
+        </section>
+    
+    <script src="{% static 'js/main.js' %}"></script>
+
+
+
+{% endblock pageContent %}
+
+{% block compress_extra_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<title>PicSqueeze - Image Compression</title>
+{% endblock compress_extra_css %}
+
+{% block extra_js %}
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock extra_js %}
+
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -42,5 +153,4 @@
   </div>
 </body>
 
-</html>
-{% endblock content%}
+</html> -->
