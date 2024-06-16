@@ -6,41 +6,47 @@
             <div class="landing__hero_text">
                 <h1>Image Compressor</h1>
                 <p>Best web app to compress image files online for free.</p>
+            </div> 
+            <div>
+                {{ img_e }}
             </div>
-            <form action="" action="" method="post" enctype="multipart/form-data" style="width: 80%;">
+             <form action="" method="post" enctype="multipart/form-data" class="select-image-form">
                 {% csrf_token%}
                 <div class="select-image-input-box">
-                    <div id="preview"  class="hidden"></div>
+                    <div id="preview" class="hidden"></div>
+                    <div id="uploadLoader" class="loader hidden"></div>
                     <i id="uploadIcon" class="fa fa-upload" aria-hidden="true"></i>
                     <label for="selectImage" class="select-image-input-label">
                         <span>Select Image</span>
                         <i class="fa fa-caret-down" aria-hidden="true"></i>
                     </label>
-                    <input type="file" name="image" id="selectImage" placeholder="Select an Image"
-                        class="select-image-input"  onchange="previewFile()" />
+                    <input type="file" name="image" id="selectImage" placeholder="Select and Image"
+                        class="select-image-input" accept="image/png, image/jpeg" onchange="previewFile()" />
                 </div>
                 <div class="compression__settings">
                     <button class="compression__settings-accordion-btn">Compression Settings (optional)</button>
                     <div class="compression__settings-accordion-panel">
                         <div class="compression__settings-options">
                             <span>
-                                <input type="radio" name="compress"  multiple checked="checked"> Max File Size (<strong>KB</strong>):
+                                <input type="radio" name="compress" checked="checked"> Max File Size
+                                (<strong>KB</strong>):
                             </span>
-                            <input type="submit" value="submit" />
                         </div>
-                        <aside>
-                                <input type="range" name="quality" min="1" max="100" value="20" class="slider" id="myRange">
-                                <p id="rangeValue"></p>
-                            <!-- <input type="number" name="file-size" class="quality-text"
-                                placeholder="Enter preferred file size (kb)" aria-placeholder="100" /> -->
-                        </aside>
+                        <div>
+                            <input type="range" name="quality" min="1" max="100" value="20" class="slider" id="myRange">
+                            <p id="rangeValue"></p>
+                        </div>
                     </div>
-                </div>  
+                </div>
+                <button type="submit" class="form__btn">Submit</button>
             </form>
+            <div class="image-size">
+                <h3 class="uncompressed">Uncompressed  {{img_u}}</h3>
+                <h3 class="compressed">Compressed  {{im }}</h3>
+            </div>
             {% if compress_download_link %}
-            <a href="{{ compress_download_link }}"><button>Download Compressed Image</button></a>
-            {% endif %}    
-
+            <a href="{{ compress_download_link }}"><button class="download-btn">Download Compressed Image</button></a>
+            {% endif %} 
         
         </section>
         <section class="container picsqueeze__about">
@@ -99,6 +105,7 @@
 {% endblock pageContent %}
 
 {% block compress_extra_css %}
+<link rel="icon" type="image/png" href="{% static 'images/resize.png' %}" />
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
 <title>PicSqueeze - Image Compression</title>
 {% endblock compress_extra_css %}

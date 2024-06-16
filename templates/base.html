@@ -94,7 +94,13 @@
                 </ul>
             </nav>
         </div>
+        {% if user.is_authenticated %}
+        <div class="username">
+          Hi {{user.username}}
+        </div>
+        {% endif %}
     </header>
+    
     <main class="base_main">
     {% block pageContent %} 
 
@@ -167,5 +173,11 @@
     <script src="{% static 'js/base.js' %}"></script>
     {% block extra_js %}
     {% endblock extra_js %}
+
+    {% block resize_extra_js %}
+    {% endblock resize_extra_js %}
+
+    {% block convert_extra_js %}
+    {% endblock convert_extra_js %}
 </body>
 </html>

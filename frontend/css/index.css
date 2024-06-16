@@ -41,7 +41,22 @@ main {
     width: 100vw;
 }
 
-.landing__hero, .image__converter,
+/* CHANGES HERE */
+
+.select-image-form {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 30px;
+}
+
+/* CHANGES HERE END */
+
+.landing__hero,
+.image__converter,
 .select-image-input-box {
     display: flex;
     flex-direction: column;
@@ -51,11 +66,13 @@ main {
     text-align: center;
 }
 
-.landing__hero_text, .image__converter_text {
+.landing__hero_text,
+.image__converter_text {
     margin-bottom: 4rem;
 }
 
-.landing__hero_text h1, .image__converter_text h1 {
+.landing__hero_text h1,
+.image__converter_text h1 {
     padding: 10px;
 }
 
@@ -110,7 +127,7 @@ main {
 }
 
 .select-image-input-label:hover {
-    opacity: 0.9;
+    opacity: 0.95;
 }
 
 .custom-file-input:focus+.select-image-input-label {
@@ -127,8 +144,31 @@ main {
     max-width: 250px;
     max-height: 250px;
     object-fit: cover;
-  }
+}
 
+/* CHANGES MADE HERE */
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 80px;
+    height: 80px;
+    animation: spin 2s linear infinite;
+    margin: auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* CHANGES MADE HERE END */
 
 /* --- IMAGES COMPRESSION CUSTOME SETTINGS STYLES ---*/
 
@@ -238,34 +278,53 @@ main {
     font-weight: 600;
 }
 
- /* Style the custom select */
- .custom-select {
+/* Style the custom select */
+.custom-select {
     position: relative;
     width: 200px;
 }
 
+/* CHANGES MADE HERE */
+
 .custom-select select {
-  background-color: var(--primary);
-  color: white;
-  padding: 12px;
-  width: 100%;
-  border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 600;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-  -webkit-appearance: button;
-  appearance: button;
-  outline: none;
+    background-color: var(--primary);
+    color: white;
+    padding: 12px;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+    cursor: pointer;
 }
 
 .custom-select select option {
-  padding: 30px;
+    padding: 30px;
+    border-radius: 50px;
+
 }
 
-.custom-select select:focus {
-  border-radius: 0px;
+.form__btn {
+    height: 1.2cm;
+    width: 80%;
+    border-radius: 10px;
+    font-size: 14pt;
+    font-weight: bold;
+    background-color: var(--primary);
+    border: none;
+    color: var(--text-one);
+    margin: 10px auto;
+    cursor: pointer;
 }
+
+.form__btn:focus {
+    border: 2px solid var(--primary-light);
+    outline: none;
+}
+
+/* CHANGES MADE HERE */
 
 /* --- WHY CHOOSE PICSQUEEZ --- */
 
@@ -339,7 +398,7 @@ main {
     background-color: var(--darkmode);
 }
 
-.set_password__container  {
+.set_password__container {
     width: 100%;
     padding: 20px;
     justify-content: center;
@@ -347,7 +406,8 @@ main {
     row-gap: 15px;
 }
 
-.set_password__container, .set_password_form {
+.set_password__container,
+.set_password_form {
     display: flex;
     flex-direction: column;
 }
@@ -356,7 +416,7 @@ main {
     padding: 0 20px;
     margin: 0 auto;
     row-gap: 15px;
-    
+
 }
 
 .set_password__main h3 {
@@ -443,9 +503,11 @@ main {
     a {
         color: var(--dark-greyish);
     }
+
     .picsqueeze__about-list-item h6 {
         color: var(--dark-greyish);
     }
+
     .select-image-input-label {
         background-color: var(--lightmode);
 
@@ -470,4 +532,3 @@ main {
         width: 20vw;
     }
 }
-

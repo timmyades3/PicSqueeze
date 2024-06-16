@@ -2,34 +2,60 @@
 {% load static %}
 {% block pageContent %}
 
-<section class="image-resize">
-    <div class="image-resize__text">
-        <h1>Picsqueeze</h1>
-        <p>Select any image to resize for free</p>
+<main class="image-resize__text">
+  <div class="image-resize__text">
+      <h1>Picsqueeze</h1>
+      <p>Select any image to resize for free</p>
+  </div>
+  <!-- CHANGES MADE HERE  -->
+  
+  <form action="" method="post" enctype="multipart/form-data" class="container image__converter ">
+    <div>
+      {{ img_e }}
     </div>
+    {% csrf_token%}
+    <div class="select-image-input-box">
+      <div id="preview" class="hidden"></div>
+      <div id="uploadLoader" class="loader hidden"></div>
+      <i id="uploadIcon" class="fa fa-upload" aria-hidden="true"></i>
+      <label for="selectImage" class="select-image-input-label">
+          <span>Select Image</span>
+          <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </label>
+      <input type="file" name="image" id="selectImage" placeholder="Select and Image"
+          class="select-image-input" accept="image/png, image/jpeg" onchange="previewFile()" />
+  </div>
+      <!-- <div class="image-resize__select-image">
+          <div id="preview" class="hidden"></div>
+          <div id="uploadLoader" class="loader hidden"></div>
+          <i id="uploadIcon" class="fa fa-upload" aria-hidden="true"></i>
+      <i tabindex="1" class="fa fa-upload" aria-hidden="true" id="fa-upload"></i>
+      <label for="selectImage" class="select-image-input-label">
+          <span>Select Image</span>
+          <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </label>
+      <input type="file" name="image" id="selectImage" placeholder="Select and Image"
+          class="image-resize__select-image_input" onchange="previewFile()" />
+</div> -->
+<div class="size-indicator">
+  <div>
+      <label for="width">Width</label>
+      <input class='size-indicator__input' id="width" name="imagewidth" type="number" min="10" max="10000" placeholder="%" >
+  </div>
+  <div>
+      <label for="height">Height</label>
+      <input id="height" name="imageheight" class='size-indicator__input' type="number" min="10" max="10000" placeholder="%" >
+  </div>
+</div>
+<button type="submit" class="form__btn">Submit</button>
+</form> 
+{% if resize_download_link %}
+<a href="{{ resize_download_link }}"><button class="resize-download-btn">Download Compressed Image</button></a>
+{% endif %}    
 
-    <div class="image-resize__select-image">
-        <i class="fa fa-upload" aria-hidden="true" id="fa-upload"></i>
-        <label for="selectImage" class="image-resize__select-image_label">
-            <span>Select Image</span>
-            <i class="fa fa-caret-down" aria-hidden="true"></i>
-        </label>
-        <input type="file" name="selectImage" id="selectImage" placeholder="Select and Image"
-            class="image-resize__select-image_input" />
-        <!-- <label class="image-resize__select-image_label" for="resize-img">
-            <p>Select Image</p>
-        </label>
-        <input type="file" id="resize-img" class="image-resize__select-image_input" accept="image/*"> -->
-    </div>
-</section>
 
-<aside class="size-indicator">
-    <label for="width">Width</label>
-    <input class='size-indicator__input' id="width" type="number" >
-    <label for="height">Height</label>
-    <input id="height" class='size-indicator__input' type="number" >
-    <button type="submit" class="size-indicator__btn">Submit</button>
-</aside>
+<!-- CHANGES MADE HERE ENDS -->
+</main>
  
 {% endblock pageContent %}
 
@@ -37,10 +63,12 @@
 <title>resize image</title>
 <link rel="icon" type="image/png" href="{% static 'images/resize.png' %}" />
 <link rel="stylesheet" href="{% static 'css/resizer.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock resize_extra_css %}
 
-
-
+{% block resize_extra_js %}
+<script src="{% static '/js/main.js' %}"></script>
+{% endblock resize_extra_js %}
 
 
 

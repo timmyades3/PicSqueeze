@@ -6,38 +6,45 @@
     <title>resize image</title>
     <link rel="icon" type="image/png" href="resize.png" />
     <link rel="stylesheet" href="..\css\resizer.css">
+    <link rel="stylesheet" href="../css/index.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
 </head>
 <body>
-    <main>
-        <section class="image-resize">
+    <main class="image-resize__text">
             <div class="image-resize__text">
                 <h1>Picsqueeze</h1>
                 <p>Select any image to resize for free</p>
             </div>
-
-            <div class="image-resize__select-image">
-                <i class="fa fa-upload" aria-hidden="true" id="fa-upload"></i>
-                <label for="selectImage" class="image-resize__select-image_label">
+            <!-- CHANGES MADE HERE  -->
+            <form>
+                <div class="image-resize__select-image">
+                    <div id="preview" class="hidden"></div>
+                    <div id="uploadLoader" class="loader hidden"></div>
+                    <i id="uploadIcon" class="fa fa-upload" aria-hidden="true"></i>
+                <i tabindex="1" class="fa fa-upload" aria-hidden="true" id="fa-upload"></i>
+                <label for="selectImage" class="select-image-input-label">
                     <span>Select Image</span>
                     <i class="fa fa-caret-down" aria-hidden="true"></i>
                 </label>
                 <input type="file" name="selectImage" id="selectImage" placeholder="Select and Image"
-                    class="image-resize__select-image_input" />
-                <!-- <label class="image-resize__select-image_label" for="resize-img">
-                    <p>Select Image</p>
-                </label>
-                <input type="file" id="resize-img" class="image-resize__select-image_input" accept="image/*"> -->
+                    class="image-resize__select-image_input" onchange="previewFile()" />
+        </div>
+        <div class="size-indicator">
+            <div>
+                <label for="width">Width</label>
+                <input class='size-indicator__input' id="width" type="number" min="10" max="10000" placeholder="%" >
             </div>
-        </section>
-
-        <aside class="size-indicator">
-            <label for="width">Width</label>
-            <input class='size-indicator__input' id="width" type="number" >
-            <label for="height">Height</label>
-            <input id="height" class='size-indicator__input' type="number" >
-            <button type="submit" class="size-indicator__btn">Submit</button>
-        </aside>
+            <div>
+                <label for="height">Height</label>
+                <input id="height" class='size-indicator__input' type="number" min="10" max="10000" placeholder="%" >
+            </div>
+        </div>
+        <button type="submit" class="form__btn">Submit</button>
+    </form>
+    <!-- CHANGES MADE HERE ENDS -->
     </main>
+    
+    <!-- SCRIPT IMPORT ADDED -->
+    <script src="../js/main.js"></script>
 </body>
 </html>

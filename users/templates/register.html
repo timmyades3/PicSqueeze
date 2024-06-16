@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'images/resize.png' %}" />
 </head>
 
 <body>
@@ -26,7 +27,7 @@
                     <a href="{% url 'social:begin' 'google-oauth2' %}"><button class="authentication google"><img src="{% static 'images\google.png' %}" class="authentication-icon google-pic"></button></a>
                 </div>
 
-                <form>
+                <form action="" method="post">
                     {% csrf_token %}
                     {{ form.errors }}
                     <fieldset class="form__inputs">

@@ -98,7 +98,7 @@ class Compress(View):
             context = {
                 'img_e': image_error
             }
-            return render(request, '404.html', context)
+            return render(request, 'landing.html', context)
 
     # get image size
     def get_image_size(self, image_size):
@@ -201,7 +201,7 @@ class Convert(LoginRequiredMixin, View):
             context = {
                 'img_e': image_error
             }
-            return render(request, '404.html', context)
+            return render(request, 'convert-img.html', context)
 
     def get(self, request):
         form = UploadimageForm()
@@ -270,7 +270,7 @@ class Resize(LoginRequiredMixin, View):
                 'img_e': image_error
             }
 
-            return render(request, '404.html', context)
+            return render(request, 'resize-img.html', context)
 
     def get(self, request):
         form = UploadimageForm()

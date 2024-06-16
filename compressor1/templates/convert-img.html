@@ -1,40 +1,61 @@
 {% extends "base.html" %}
 {% load static %}
 {% block pageContent %}
+<main>
 
-<section class="container image__converter ">
-    <div class="image__converter_text">
-        <h1>Image Compressor</h1>
-        <p>Best web app to compress image files online for free.</p>
-    </div>
-    <div class="select-image-input-box">
-        <i class="fa fa-upload" aria-hidden="true"></i>
-        <label for="selectImage" class="select-image-input-label">
-            <span>Select Image</span>
-            <i class="fa fa-caret-down" aria-hidden="true"></i>
-        </label>
-        <input type="file" name="selectImage" id="selectImage" placeholder="Select and Image"
-            class="select-image-input" />
-    </div>
-    <div class="conversion__settings">
-        <h4>Select the format you want to convert to:</h4>
-        <div class="custom-select" style="width:200px;">
-            <select>
-              <option value="0">Select Format:</option>
-              <option value="1">PNG</option>
-              <option value="2">JPG</option>
-              <option value="3">WEBP</option>
-            </select>
-          </div>
-    </div>
-</section>
-   
+
+<div>
+  {{ img_e }}
+</div>
+<form action="" method="post" enctype="multipart/form-data" class="container image__converter ">
+  {% csrf_token%}
+  <div class="image__converter_text">
+      <h1>Image Compressor</h1>
+      <p>Best web app to compress image files online for free.</p>
+  </div>
+  <div class="select-image-input-box">
+      <div id="preview"  class="hidden"></div>
+      <div id="uploadLoader" class="loader hidden"></div>
+      <i id="uploadIcon" class="fa fa-upload" aria-hidden="true"></i>
+      <label for="selectImage" class="select-image-input-label">
+          <span>Select Image</span>
+          <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </label>
+      <input type="file" name="image" id="selectImage" placeholder="Select and Image"
+          class="select-image-input" onchange="previewFile()" />
+  </div>
+  <div class="conversion__settings">
+      <h4>Select the format you want to convert to:</h4>
+      <div class="custom-select" style="width:200px;">
+          <select name="imageformat" >
+            <option value="">Select Format:</option>
+            <option value="jpeg">JPG</option>
+            <option value="png">PNG</option>
+            <option value="gif">GIF</option>
+            <option value="webp">WEBP</option>
+          </select>
+        </div>
+  </div>
+<button type="submit" class="form__btn">Submit</button>
+</form>
+
+{% if convert_download_link %}
+<a href="{{ convert_download_link }}"><button class="convert-download-btn">Download Compressed Image</button></a>
+{% endif %} 
+
+
+</main> 
 {% endblock pageContent %}
 
 {% block convert_extra_css %}
+<link rel="icon" type="image/png" href="{% static 'images/resize.png' %}" />
 <title>PicSqueeze - Image Converter</title>
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock convert_extra_css %}
+
+{% block convert_extra_js %}
+<script src="{% static '/js/main.js' %}"></script>
+{% endblock convert_extra_js %}
 
 <!-- 
 <!DOCTYPE html>

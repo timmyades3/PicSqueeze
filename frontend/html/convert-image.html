@@ -33,19 +33,22 @@
 </head>
 <body>
     <main>
-        <section class="container image__converter ">
+        <!-- FORM ADDED NEW -->
+        <form class="container image__converter ">
             <div class="image__converter_text">
                 <h1>Image Compressor</h1>
                 <p>Best web app to compress image files online for free.</p>
             </div>
             <div class="select-image-input-box">
-                <i class="fa fa-upload" aria-hidden="true"></i>
+                <div id="preview"  class="hidden"></div>
+                <div id="uploadLoader" class="loader hidden"></div>
+                <i id="uploadIcon" class="fa fa-upload" aria-hidden="true"></i>
                 <label for="selectImage" class="select-image-input-label">
                     <span>Select Image</span>
                     <i class="fa fa-caret-down" aria-hidden="true"></i>
                 </label>
                 <input type="file" name="selectImage" id="selectImage" placeholder="Select and Image"
-                    class="select-image-input" />
+                    class="select-image-input" onchange="previewFile()" />
             </div>
             <div class="conversion__settings">
                 <h4>Select the format you want to convert to:</h4>
@@ -58,7 +61,11 @@
                     </select>
                   </div>
             </div>
-        </section>
+        <button type="submit" class="form__btn">Submit</button>
+        </form>
+        <!-- FORM ADDED NEW END -->
     </main>
+    <!-- SCRIPT IMPORT ADDED -->
+    <script src="../js/main.js"></script>
 </body>
 </html>

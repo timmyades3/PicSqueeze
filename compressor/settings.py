@@ -25,9 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('COMPRESSOR_SECRET_KEY') 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if config('DEBUG') == 'False':
+    DEBUG = False
+else:
+    DEBUG = True   
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost','Timmyades3.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','Timmyades3.pythonanywhere.com', ".vercel.app", ".now.sh"]
 
 
 # Application definition
@@ -38,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     # third party apps
     'social_django',
@@ -58,6 +62,7 @@ MIDDLEWARE = [
     # third party middlewares
     'social_django.middleware.SocialAuthExceptionMiddleware',
     'users.middlewares.Onesessionperuser',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'compressor.urls'
@@ -87,22 +92,27 @@ WSGI_APPLICATION = 'compressor.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': config('PGDATABASE'),
-    #     'USER': config('PGUSER'),
-    #     'PASSWORD': config('PGPASSWORD'),
-    #     'HOST': config('PGHOST'),
-    #     'PORT': '5432',
-    # }
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG == True:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
-
-
+else:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('PGDATABASE'),
+        'USER': config('PGUSER'),
+        'PASSWORD': config('PGPASSWORD'),
+        'HOST': config('PGHOST'),
+        'PORT': config('PGPORT', 5432),
+        'OPTIONS': {
+        'sslmode': 'require',
+        },
+    }
+    }
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
