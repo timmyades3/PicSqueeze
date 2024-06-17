@@ -25,11 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('COMPRESSOR_SECRET_KEY') 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-#if config('DEBUG') == 'False':
-#    DEBUG = False
-#else:
-#    DEBUG = True   
+
+if config('DEBUG') == 'False':
+    DEBUG = False
+else:
+    DEBUG = True   
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost','Timmyades3.pythonanywhere.com', ".vercel.app", ".now.sh"]
 
