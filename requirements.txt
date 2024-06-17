@@ -19,7 +19,7 @@ jmespath==1.0.1
 MarkupSafe==2.1.4
 oauthlib==3.2.2
 packaging==23.1
-Pillow==9.5.0
+Pillow
 pip-upgrader==1.4.15
 proglog==0.1.10
 psutil==5.9.5
