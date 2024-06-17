@@ -23,7 +23,6 @@ Pillow==9.5.0
 pip-upgrader==1.4.15
 proglog==0.1.10
 psutil==5.9.5
-psycopg2==2.9.6
 psycopg2-binary==2.9.6
 pycparser==2.21
 PyJWT==2.7.0
