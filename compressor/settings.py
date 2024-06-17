@@ -101,7 +101,7 @@ WSGI_APPLICATION = 'compressor.wsgi.application'
 #        }
 #    }
 #else:
-    DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': config('PGDATABASE'),
