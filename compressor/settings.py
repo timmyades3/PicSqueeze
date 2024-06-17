@@ -31,7 +31,7 @@ if config('DEBUG') == 'False':
 else:
     DEBUG = True   
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost','Timmyades3.pythonanywhere.com', ".vercel.app", ".now.sh"]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','Timmyades3.pythonanywhere.com', 'picsqueeze.onrender.com']
 
 
 # Application definition
